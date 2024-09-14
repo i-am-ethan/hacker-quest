@@ -15,6 +15,7 @@ void displayErrorMessage(String ErrorMessage);
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int enemyHp, int enemyFullHp, int enemyAttackPoint);
 void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
+void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
 
 int stageNumber;
 
@@ -137,7 +138,6 @@ int main(void){
   // -----------------------------------------------------
   // (8-1)先攻と後攻を決める処理
   // -----------------------------------------------------
-  insertLineBreak(2);
   int userAttackType;
   int isUserFirstAttachForFirstStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
   // -----------------------------------------------------
@@ -157,10 +157,7 @@ int main(void){
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
-        insertLineBreak(24);
-        printf("--------------------------------------------\n");
-        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         RitchieHp -= userAttackPoint;
         if (RitchieHp < 0) {
           RitchieHp = 0;
@@ -178,10 +175,7 @@ int main(void){
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
-        insertLineBreak(24);
-        printf("--------------------------------------------\n");
-        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         RitchieHp -= userAttackPoint;
         if (RitchieHp < 0) {
           RitchieHp = 0;
@@ -199,10 +193,7 @@ int main(void){
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
-        insertLineBreak(24);
-        printf("--------------------------------------------\n");
-        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         RitchieHp -= userAttackPoint;
         if (RitchieHp < 0) {
           RitchieHp = 0;
@@ -220,10 +211,7 @@ int main(void){
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
-        insertLineBreak(24);
-        printf("--------------------------------------------\n");
-        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         RitchieHp -= userAttackPoint;
         if (RitchieHp < 0) {
           RitchieHp = 0;
@@ -259,10 +247,7 @@ int main(void){
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
-        insertLineBreak(20);
-        printf("--------------------------------------------\n");
-        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         RitchieHp -= userAttackPoint;
         if (RitchieHp < 0) {
           RitchieHp = 0;
@@ -279,10 +264,7 @@ int main(void){
         scanf("%d", &userAttackType);
         switch (userAttackType) {
           case 0:
-            insertLineBreak(20);
-            printf("--------------------------------------------\n");
-            printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-            printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+            displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
             RitchieHp -= userAttackPoint;
             if (RitchieHp < 0) {
               RitchieHp = 0;
@@ -299,10 +281,7 @@ int main(void){
         scanf("%d", &userAttackType);
         switch (userAttackType) {
           case 0:
-            insertLineBreak(20);
-            printf("--------------------------------------------\n");
-            printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-            printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+            displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
             RitchieHp -= userAttackPoint;
             if (RitchieHp < 0) {
               RitchieHp = 0;
@@ -319,10 +298,7 @@ int main(void){
         scanf("%d", &userAttackType);
         switch (userAttackType) {
           case 0:
-            insertLineBreak(20);
-            printf("--------------------------------------------\n");
-            printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-            printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+            displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
             RitchieHp -= userAttackPoint;
             if (RitchieHp < 0) {
               RitchieHp = 0;
@@ -487,4 +463,11 @@ void displayFirstStageOpeningMessage() {
   printf("デニス・リッチー:\n");
   printf("C言語の開発者であり、Unixオペレーティングシステムの共同開発者。\n");
   insertLineBreak(1);
+}
+
+void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName) {
+  insertLineBreak(24);
+  printf("--------------------------------------------\n");
+  printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
+  printf("%sは%dのダメージを受けた...!!!\n", firstStageEnemyName, userAttackPoint);
 }
