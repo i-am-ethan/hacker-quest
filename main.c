@@ -120,7 +120,7 @@ int main(void){
   displayFirstStageOpeningMessage();
   displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
   int isBattleStart;
-  printf("バトルをはじめる\n");
+  printf("ステージ1をはじめる\n");
   printf("(0:いいえ or 1:はい)\n");
   scanf("%d", &isBattleStart);
   if(!isBattleStart){
@@ -287,6 +287,13 @@ int main(void){
   // -----------------------------------------------------
   // (9)野生のレイモンドが現れた:Eric S. Raymond: HP:10 攻撃力:10
   // -----------------------------------------------------
+  printf("--------------------------------------------\n");
+  printf("ステージ2をはじめる\n");
+  printf("(0:いいえ or 1:はい)\n");
+  scanf("%d", &isBattleStart);
+  if(!isBattleStart){
+    displayErrorMessage("バトルに挑戦する準備ができていないようです。");
+  }
 
   // -----------------------------------------------------
   // (10)野生のグレアムが現れた:Paul Graham: HP:400 攻撃力:200
