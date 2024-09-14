@@ -56,7 +56,6 @@ int main(void){
     scanf("%s", OpenTreasurePassword);
 
     if(strcmp(OpenTreasurePassword, "web") == 0) {
-      insertLineBreak(30);
       displayGameClearMessage();
       exit(1);
     }else{
@@ -365,6 +364,7 @@ void displayJobs() {
 };
 
 void displayGameClearMessage() {
+  insertLineBreak(30);
   printf("\033[43mおめでとうございます!!!\033[0m\n\n");
   printf("\033[43mあなたは既にハッカーかハッカーになる素質があります!!!\033[0m\n\n");
   printf("\033[43mこれでこのゲームを終わります!!!\033[0m\n\n");
