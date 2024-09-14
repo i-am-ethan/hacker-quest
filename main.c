@@ -28,11 +28,11 @@ int main(void){
   // (2)ゲームをはじめますか？
   // -----------------------------------------------------
   printf("このゲームをはじめますか?\n");
-  printf("\n");
+  insertLineBreak(1);
   printf("\033[33m0か1か7を入力してください。\033[0m\n");
-  printf("\n");
+  insertLineBreak(1);
   printf("(0:いいえ or 1:はい or 7:宝箱を開ける)\n");
-  printf("\n");
+  insertLineBreak(1);
   int gameStartAnswer;
   String OpenTreasurePassword;
   scanf("%d", &gameStartAnswer);
@@ -64,9 +64,9 @@ int main(void){
   // (4)主人公の名前を8文字以内で入力してください。
   // -----------------------------------------------------
   String userName;  
-  printf("\n");
+  insertLineBreak(1);
   printf("主人公の名前を\033[33m8文字以内\033[0mで入力してください。\n");
-  printf("\n");
+  insertLineBreak(1);
   scanf("%8s", userName); // 8文字で切っちゃう。
   if(strcmp(userName, "test") == 0) {
     displayErrorMessage("testユーザーが選択されました。");
@@ -79,11 +79,11 @@ int main(void){
   // (5)職業を選んでください。
   // -----------------------------------------------------
   int job;
-  printf("\n");
+  insertLineBreak(1);
   printf("\033[35m%s\033[0mの職業を\033[33m1~4の中から\033[0m選択してください。\n", userName);
-  printf("\n");
+  insertLineBreak(1);
   displayJobs();
-  printf("\n");
+  insertLineBreak(1);
   scanf("%d", &job); // 職業選択
   insertLineBreak(30);
   int userHp;
@@ -96,11 +96,11 @@ int main(void){
   // -----------------------------------------------------
   int questStartAnswer;
   printf("クエストに挑戦する準備はできましたか？");
-  printf("\n");
+  insertLineBreak(1);
   printf("(0:いいえ or 1:はい)\n");
-  printf("\n");
+  insertLineBreak(1);
   scanf("%d", &questStartAnswer);
-  printf("\n");
+  insertLineBreak(1);
   if (!questStartAnswer) {
     displayErrorMessage("クエストに挑戦する準備ができていないようです。");
     exit(1);
@@ -120,12 +120,12 @@ int main(void){
   int RitchieAttackPoint = 10;
   printf("--------------------------------------------\n");
   printf("\033[45m野生のリッチーが現れた...!!!\033[0m\n");
-  printf("\n");
+  insertLineBreak(1);
   printf("デニス・リッチー:\n");
   printf("C言語の開発者であり、Unixオペレーティングシステムの共同開発者。\n");
-  printf("\n");
+  insertLineBreak(1);
   displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-  printf("\n");
+  insertLineBreak(1);
   int isBattleStart;
   printf("バトルをはじめる\n");
   printf("(0:いいえ or 1:はい)\n");
@@ -137,210 +137,211 @@ int main(void){
   // -----------------------------------------------------
   // (8-1)先攻と後攻を決める処理
   // -----------------------------------------------------
-  printf("\n");
-  printf("\n");
+  insertLineBreak(2);
   int userAttackType;
   int isUserFirstAttachForFirstStage = rand() % 2; // ユーザーが先攻か(0か1)
   // -----------------------------------------------------
   // (8-2)バトルの処理
   // -----------------------------------------------------
   switch (isUserFirstAttachForFirstStage) {
-    // 先攻の場合
-    case 0:
-      printf("--------------------------------------------\n");
-      printf("\033[35m%s\033[0mが先攻になった...!!!\n", userName);
-      printf("\n");
-      printf("\n");
-      printf("攻撃を選んでください。\n");
-      printf("\n");
-      switch (job) {
-        case 1:
-          printf("0:攻撃, 1:未修得\n");
-          printf("\033[33m0を入力してください。\033[0m\n");
-          scanf("%d", &userAttackType);
-          switch (userAttackType) {
-            case 0:
-              insertLineBreak(24);
-              printf("--------------------------------------------\n");
-              printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-              printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
-              RitchieHp -= userAttackPoint;
-              if (RitchieHp < 0) {
-                RitchieHp = 0;
-              }
-              displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              displayRitchieDiningMessage();
-              break;
-            default:
-              displayErrorMessage("存在しない技が選択されました。");
-              exit(1);
-          }
-        case 2:
-          printf("0:攻撃, 1:未修得\n");
-          printf("\033[33m0を入力してください。\033[0m\n");
-          scanf("%d", &userAttackType);
-          switch (userAttackType) {
-            case 0:
-              insertLineBreak(24);
-              printf("--------------------------------------------\n");
-              printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-              printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
-              RitchieHp -= userAttackPoint;
-              if (RitchieHp < 0) {
-                RitchieHp = 0;
-              }
-              displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              displayRitchieDiningMessage();
-              break;
-            default:
-              displayErrorMessage("存在しない技が選択されました。");
-              exit(1);
-          }
-        case 3:
-          printf("0:攻撃, 1:未修得\n");
-          printf("\033[33m0を入力してください。\033[0m\n");
-          scanf("%d", &userAttackType);
-          switch (userAttackType) {
-            case 0:
-              insertLineBreak(24);
-              printf("--------------------------------------------\n");
-              printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-              printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
-              RitchieHp -= userAttackPoint;
-              if (RitchieHp < 0) {
-                RitchieHp = 0;
-              }
-              displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              displayRitchieDiningMessage();
-              break;
-            default:
-              displayErrorMessage("存在しない技が選択されました。");
-              exit(1);
-          }
-        case 4:
-          printf("0:攻撃, 1:未修得\n");
-          printf("\033[33m0を入力してください。\033[0m\n");
-          scanf("%d", &userAttackType);
-          switch (userAttackType) {
-            case 0:
-              insertLineBreak(24);
-              printf("--------------------------------------------\n");
-              printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-              printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
-              RitchieHp -= userAttackPoint;
-              if (RitchieHp < 0) {
-                RitchieHp = 0;
-              }
-              displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              displayRitchieDiningMessage();
-              break;
-            default:
-              displayErrorMessage("存在しない技が選択されました。");
-              exit(1);
-          }
+  // 先攻の場合-----------------------------------------------
+  case 0:
+    printf("--------------------------------------------\n");
+    printf("\033[35m%s\033[0mが先攻になった...!!!\n", userName);
+    insertLineBreak(2);
+    printf("攻撃を選んでください。\n");
+    insertLineBreak(1);
+    switch (job) {
+    case 1:
+      printf("0:攻撃, 1:未修得\n");
+      printf("\033[33m0を入力してください。\033[0m\n");
+      scanf("%d", &userAttackType);
+      switch (userAttackType) {
+      case 0:
+        insertLineBreak(24);
+        printf("--------------------------------------------\n");
+        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
+        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        RitchieHp -= userAttackPoint;
+        if (RitchieHp < 0) {
+          RitchieHp = 0;
+        }
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayRitchieDiningMessage();
+        break;
+      default:
+        displayErrorMessage("存在しない技が選択されました。");
+        exit(1);
       }
       break;
-    // 後攻の場合
+    case 2:
+      printf("0:攻撃, 1:未修得\n");
+      printf("\033[33m0を入力してください。\033[0m\n");
+      scanf("%d", &userAttackType);
+      switch (userAttackType) {
+      case 0:
+        insertLineBreak(24);
+        printf("--------------------------------------------\n");
+        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
+        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        RitchieHp -= userAttackPoint;
+        if (RitchieHp < 0) {
+          RitchieHp = 0;
+        }
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayRitchieDiningMessage();
+        break;
+      default:
+        displayErrorMessage("存在しない技が選択されました。");
+        exit(1);
+      }
+      break;
+    case 3:
+      printf("0:攻撃, 1:未修得\n");
+      printf("\033[33m0を入力してください。\033[0m\n");
+      scanf("%d", &userAttackType);
+      switch (userAttackType) {
+      case 0:
+        insertLineBreak(24);
+        printf("--------------------------------------------\n");
+        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
+        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        RitchieHp -= userAttackPoint;
+        if (RitchieHp < 0) {
+          RitchieHp = 0;
+        }
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayRitchieDiningMessage();
+        break;
+      default:
+        displayErrorMessage("存在しない技が選択されました。");
+        exit(1);
+      }
+      break;
+    case 4:
+      printf("0:攻撃, 1:未修得\n");
+      printf("\033[33m0を入力してください。\033[0m\n");
+      scanf("%d", &userAttackType);
+      switch (userAttackType) {
+      case 0:
+        insertLineBreak(24);
+        printf("--------------------------------------------\n");
+        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
+        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        RitchieHp -= userAttackPoint;
+        if (RitchieHp < 0) {
+          RitchieHp = 0;
+        }
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayRitchieDiningMessage();
+        break;
+      default:
+        displayErrorMessage("存在しない技が選択されました。");
+        exit(1);
+      }
+      break;
+    }
+    // switch job 終わり ----------
+
+  // 後攻の場合
+  case 1:
+    printf("--------------------------------------------\n");
+    printf("\033[35m%s\033[0mは後攻になった...!!!\n", userName);
+    insertLineBreak(2);
+    printf("リッチーは\033[91m攻撃\033[0mをしてきた...!!!\n");
+    printf("\033[35m%s\033[0mは\033[91m%d\033[0mのダメージを受けた...!!!\n", userName, RitchieAttackPoint);
+    userHp -= RitchieAttackPoint;
+    insertLineBreak(2);
+    displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+    insertLineBreak(1);
+    printf("攻撃を選んでください。\n");
+    insertLineBreak(1);
+    switch (job) {
+    // 職業の種類
     case 1:
-      printf("--------------------------------------------\n");
-      printf("\033[35m%s\033[0mは後攻になった...!!!\n", userName);
-      printf("\n");
-      printf("\n");
-      printf("リッチーは\033[91m攻撃\033[0mをしてきた...!!!\n");
-      printf("\033[35m%s\033[0mは\033[91m%d\033[0mのダメージを受けた...!!!\n", userName, RitchieAttackPoint);
-      userHp -= RitchieAttackPoint;
-      printf("\n");
-      printf("\n");
-      displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-      printf("\n");
-      printf("攻撃を選んでください。\n");
-      printf("\n");
-      switch (job) {
-        // 職業の種類
-        case 1:
-          printf("0:攻撃, 1:未修得\n");
-          printf("\033[33m0を入力してください。\033[0m\n");
-          scanf("%d", &userAttackType);
-          switch (userAttackType) {
-            case 0:
-              insertLineBreak(20);
-              printf("--------------------------------------------\n");
-              printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-              printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
-              RitchieHp -= userAttackPoint;
-              if (RitchieHp < 0) {
-                RitchieHp = 0;
-              }
-              displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              displayRitchieDiningMessage();
-              break;
-            default:
-              displayErrorMessage("存在しない技が選択されました。");
-              exit(1);
-          }
-        case 2:
-          printf("0:攻撃, 1:未修得\n");
-          printf("\033[33m0を入力してください。\033[0m\n");
-          scanf("%d", &userAttackType);
-          switch (userAttackType) {
-            case 0:
-              insertLineBreak(20);
-              printf("--------------------------------------------\n");
-              printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-              printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
-              RitchieHp -= userAttackPoint;
-              if (RitchieHp < 0) {
-                RitchieHp = 0;
-              }
-              displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              displayRitchieDiningMessage();
-              break;
-            default:
-              displayErrorMessage("存在しない技が選択されました。");
-              exit(1);
-          }
-        case 3:
-          printf("0:攻撃, 1:未修得\n");
-          printf("\033[33m0を入力してください。\033[0m\n");
-          scanf("%d", &userAttackType);
-          switch (userAttackType) {
-            case 0:
-              insertLineBreak(20);
-              printf("--------------------------------------------\n");
-              printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-              printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
-              RitchieHp -= userAttackPoint;
-              if (RitchieHp < 0) {
-                RitchieHp = 0;
-              }
-              displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              displayRitchieDiningMessage();
-              break;
-            default:
-              displayErrorMessage("存在しない技が選択されました。");
-              exit(1);
-          }
-        case 4:
-          printf("0:攻撃, 1:未修得\n");
-          printf("\033[33m0を入力してください。\033[0m\n");
-          scanf("%d", &userAttackType);
-          switch (userAttackType) {
-            case 0:
-              insertLineBreak(20);
-              printf("--------------------------------------------\n");
-              printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-              printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
-              RitchieHp -= userAttackPoint;
-              if (RitchieHp < 0) {
-                RitchieHp = 0;
-              }
-              displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              displayRitchieDiningMessage();
-              break;
-            default:
-              displayErrorMessage("存在しない技が選択されました。");
-              exit(1);
-          }
+      printf("0:攻撃, 1:未修得\n");
+      printf("\033[33m0を入力してください。\033[0m\n");
+      scanf("%d", &userAttackType);
+      switch (userAttackType) {
+      case 0:
+        insertLineBreak(20);
+        printf("--------------------------------------------\n");
+        printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
+        printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+        RitchieHp -= userAttackPoint;
+        if (RitchieHp < 0) {
+          RitchieHp = 0;
+        }
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayRitchieDiningMessage();
+        break;
+      default:
+        displayErrorMessage("存在しない技が選択されました。");
+        exit(1);
+      }
+      case 2:
+        printf("0:攻撃, 1:未修得\n");
+        printf("\033[33m0を入力してください。\033[0m\n");
+        scanf("%d", &userAttackType);
+        switch (userAttackType) {
+          case 0:
+            insertLineBreak(20);
+            printf("--------------------------------------------\n");
+            printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
+            printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+            RitchieHp -= userAttackPoint;
+            if (RitchieHp < 0) {
+              RitchieHp = 0;
+            }
+            displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+            displayRitchieDiningMessage();
+            break;
+          default:
+            displayErrorMessage("存在しない技が選択されました。");
+            exit(1);
+        }
+      case 3:
+        printf("0:攻撃, 1:未修得\n");
+        printf("\033[33m0を入力してください。\033[0m\n");
+        scanf("%d", &userAttackType);
+        switch (userAttackType) {
+          case 0:
+            insertLineBreak(20);
+            printf("--------------------------------------------\n");
+            printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
+            printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+            RitchieHp -= userAttackPoint;
+            if (RitchieHp < 0) {
+              RitchieHp = 0;
+            }
+            displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+            displayRitchieDiningMessage();
+            break;
+          default:
+            displayErrorMessage("存在しない技が選択されました。");
+            exit(1);
+        }
+      case 4:
+        printf("0:攻撃, 1:未修得\n");
+        printf("\033[33m0を入力してください。\033[0m\n");
+        scanf("%d", &userAttackType);
+        switch (userAttackType) {
+          case 0:
+            insertLineBreak(20);
+            printf("--------------------------------------------\n");
+            printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
+            printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
+            RitchieHp -= userAttackPoint;
+            if (RitchieHp < 0) {
+              RitchieHp = 0;
+            }
+            displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+            displayRitchieDiningMessage();
+            break;
+          default:
+            displayErrorMessage("存在しない技が選択されました。");
+            exit(1);
+        }
       }
       break;
   }
