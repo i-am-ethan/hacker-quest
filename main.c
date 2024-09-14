@@ -13,7 +13,7 @@ void displayUserNameRequestMessage();
 void displayUserNameFeedBackMessage(String userName);
 void insertLineBreak(int lineCount);
 void displayRitchieDiningMessage();
-void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
+void setUpUserJob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
 void displayErrorMessage(String ErrorMessage);
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int enemyHp, int enemyFullHp, int enemyAttackPoint);
 void displayAttackOption(int stageNumber);
@@ -86,7 +86,7 @@ int main(void){
   int userHp;
   int userFullHp;
   int userAttackPoint;
-  setUpUserjob(job, userName, &userHp, &userFullHp, &userAttackPoint);
+  setUpUserJob(job, userName, &userHp, &userFullHp, &userAttackPoint);
 
   // -----------------------------------------------------
   // (6)クエストに挑戦する準備はできましたか？
@@ -402,7 +402,7 @@ void displayRitchieDiningMessage() {
   printf("\033[42m「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」\033[0m\n"); 
 }
 
-void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint) {
+void setUpUserJob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint) {
   switch (job) {
   case 1:
     printf("\033[35m%s\033[0mは\033[91m勇者\033[0mを選んだ。\n", userName);
