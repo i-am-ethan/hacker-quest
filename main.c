@@ -125,14 +125,7 @@ int main(void){
   stageNumber = 1;
   
   displayFirstStageOpeningMessage();
-  // printf("--------------------------------------------\n");
-  // printf("\033[45m野生のリッチーが現れた...!!!\033[0m\n");
-  // insertLineBreak(1);
-  // printf("デニス・リッチー:\n");
-  // printf("C言語の開発者であり、Unixオペレーティングシステムの共同開発者。\n");
-  // insertLineBreak(1);
   displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-  insertLineBreak(1);
   int isBattleStart;
   printf("バトルをはじめる\n");
   printf("(0:いいえ or 1:はい)\n");
@@ -467,6 +460,7 @@ void displayBattleStatus(String userName, int userHp, int userFullHp, int userAt
   printf("%sの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", enemyName, enemyHp, enemyFullHp, enemyAttackPoint);
   printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
+  insertLineBreak(1);
 }
 
 void displayAttackOption(int stageNumber) {
