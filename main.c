@@ -13,6 +13,9 @@ void displayRitchieDiningMessage();
 void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
 void displayErrorMessage(String ErrorMessage);
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int enemyHp, int enemyFullHp, int enemyAttackPoint);
+void displayAttackOption(int stageNumber);
+
+int stageNumber;
 
 int main(void){
   // -----------------------------------------------------
@@ -118,6 +121,8 @@ int main(void){
   int RitchieHp = 10;
   int RitchieFullHp = 10;
   int RitchieAttackPoint = 10;
+  stageNumber = 1;
+  
   printf("--------------------------------------------\n");
   printf("\033[45m野生のリッチーが現れた...!!!\033[0m\n");
   insertLineBreak(1);
@@ -139,7 +144,7 @@ int main(void){
   // -----------------------------------------------------
   insertLineBreak(2);
   int userAttackType;
-  int isUserFirstAttachForFirstStage = rand() % 2; // ユーザーが先攻か(0か1)
+  int isUserFirstAttachForFirstStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
   // -----------------------------------------------------
   // (8-2)バトルの処理
   // -----------------------------------------------------
@@ -153,8 +158,9 @@ int main(void){
     insertLineBreak(1);
     switch (job) {
     case 1:
-      printf("0:攻撃, 1:未修得\n");
-      printf("\033[33m0を入力してください。\033[0m\n");
+      displayAttackOption(stageNumber);
+      // printf("0:攻撃, 1:未修得\n");
+      // printf("\033[33m0を入力してください。\033[0m\n");
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -175,8 +181,9 @@ int main(void){
       }
       break;
     case 2:
-      printf("0:攻撃, 1:未修得\n");
-      printf("\033[33m0を入力してください。\033[0m\n");
+      displayAttackOption(stageNumber);
+      // printf("0:攻撃, 1:未修得\n");
+      // printf("\033[33m0を入力してください。\033[0m\n");
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -197,8 +204,9 @@ int main(void){
       }
       break;
     case 3:
-      printf("0:攻撃, 1:未修得\n");
-      printf("\033[33m0を入力してください。\033[0m\n");
+      displayAttackOption(stageNumber);
+      // printf("0:攻撃, 1:未修得\n");
+      // printf("\033[33m0を入力してください。\033[0m\n");
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -219,8 +227,9 @@ int main(void){
       }
       break;
     case 4:
-      printf("0:攻撃, 1:未修得\n");
-      printf("\033[33m0を入力してください。\033[0m\n");
+      displayAttackOption(stageNumber);
+      // printf("0:攻撃, 1:未修得\n");
+      // printf("\033[33m0を入力してください。\033[0m\n");
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -259,8 +268,9 @@ int main(void){
     switch (job) {
     // 職業の種類
     case 1:
-      printf("0:攻撃, 1:未修得\n");
-      printf("\033[33m0を入力してください。\033[0m\n");
+      displayAttackOption(stageNumber);
+      // printf("0:攻撃, 1:未修得\n");
+      // printf("\033[33m0を入力してください。\033[0m\n");
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -280,8 +290,9 @@ int main(void){
         exit(1);
       }
       case 2:
-        printf("0:攻撃, 1:未修得\n");
-        printf("\033[33m0を入力してください。\033[0m\n");
+        displayAttackOption(stageNumber);
+        // printf("0:攻撃, 1:未修得\n");
+        // printf("\033[33m0を入力してください。\033[0m\n");
         scanf("%d", &userAttackType);
         switch (userAttackType) {
           case 0:
@@ -301,8 +312,9 @@ int main(void){
             exit(1);
         }
       case 3:
-        printf("0:攻撃, 1:未修得\n");
-        printf("\033[33m0を入力してください。\033[0m\n");
+        displayAttackOption(stageNumber);
+        // printf("0:攻撃, 1:未修得\n");
+        // printf("\033[33m0を入力してください。\033[0m\n");
         scanf("%d", &userAttackType);
         switch (userAttackType) {
           case 0:
@@ -322,8 +334,9 @@ int main(void){
             exit(1);
         }
       case 4:
-        printf("0:攻撃, 1:未修得\n");
-        printf("\033[33m0を入力してください。\033[0m\n");
+        displayAttackOption(stageNumber);
+        // printf("0:攻撃, 1:未修得\n");
+        // printf("\033[33m0を入力してください。\033[0m\n");
         scanf("%d", &userAttackType);
         switch (userAttackType) {
           case 0:
@@ -469,3 +482,20 @@ void displayBattleStatus(String userName, int userHp, int userFullHp, int userAt
   printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
 }
+
+void displayAttackOption(int stageNumber) {
+  switch (stageNumber) {
+  case 1:
+    printf("0:攻撃, 1:未修得\n");
+    printf("\033[33m0を入力してください。\033[0m\n");
+    break;
+  case 2:
+    printf("0:攻撃, 1:未修得\n");
+    printf("\033[33m0を入力してください。\033[0m\n");
+    break;
+  case 3:
+    printf("0:攻撃, 1:必殺技\n");
+    printf("\033[33m0か1を入力してください。\033[0m\n");
+    break;
+  };
+};
