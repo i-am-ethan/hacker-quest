@@ -10,6 +10,7 @@ void displayStartGameOptionMessage();
 void displayJobs();
 void displayGameClearMessage();
 void displayUserNameRequestMessage();
+void displayUserNameFeedBackMessage(String userName);
 void insertLineBreak(int lineCount);
 void displayRitchieDiningMessage();
 void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
@@ -72,9 +73,10 @@ int main(void){
     displayErrorMessage("testユーザーが選択されました。");
     exit(1);
   }
-  insertLineBreak(30);
-  printf("こんにちは\033[35m%s\033[0m。かっこいい名前ですね。\n", userName);
-  printf("--------------------------------------------\n");
+  displayUserNameFeedBackMessage(userName);
+  // insertLineBreak(30);
+  // printf("こんにちは\033[35m%s\033[0m。かっこいい名前ですね。\n", userName);
+  // printf("--------------------------------------------\n");
   // -----------------------------------------------------
   // (5)職業を選んでください。
   // -----------------------------------------------------
@@ -387,6 +389,12 @@ void displayUserNameRequestMessage() {
   insertLineBreak(1);
   printf("主人公の名前を\033[33m8文字以内\033[0mで入力してください。\n");
   insertLineBreak(1);
+}
+
+void displayUserNameFeedBackMessage(String userName) {
+  insertLineBreak(30);
+  printf("こんにちは\033[35m%s\033[0m。かっこいい名前ですね。\n", userName);
+  printf("--------------------------------------------\n");
 }
 
 void displayRitchieDiningMessage() {
