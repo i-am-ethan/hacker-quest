@@ -9,6 +9,7 @@ void displayTitle();
 void displayStartGameOptionMessage();
 void displayJobs();
 void displayGameClearMessage();
+void displayUserNameRequestMessage();
 void insertLineBreak(int lineCount);
 void displayRitchieDiningMessage();
 void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
@@ -52,7 +53,6 @@ int main(void){
   case 7:
     printf("宝箱を開けるためのパスワードを入力してください。\n");
     scanf("%s", OpenTreasurePassword);
-
     if(strcmp(OpenTreasurePassword, secretPassword) == 0) {
       displayGameClearMessage();
       exit(1);
@@ -66,9 +66,10 @@ int main(void){
   // (4)主人公の名前を8文字以内で入力してください。
   // -----------------------------------------------------
   String userName;  
-  insertLineBreak(1);
-  printf("主人公の名前を\033[33m8文字以内\033[0mで入力してください。\n");
-  insertLineBreak(1);
+  displayUserNameRequestMessage();
+  // insertLineBreak(1);
+  // printf("主人公の名前を\033[33m8文字以内\033[0mで入力してください。\n");
+  // insertLineBreak(1);
   scanf("%8s", userName); // 8文字で切っちゃう。
   if(strcmp(userName, "test") == 0) {
     displayErrorMessage("testユーザーが選択されました。");
@@ -383,6 +384,12 @@ void insertLineBreak(int lineCount) {
   for (int i = 0; i <= lineCount; i++){
     printf("\n");
   }
+}
+
+void displayUserNameRequestMessage() {
+  insertLineBreak(1);
+  printf("主人公の名前を\033[33m8文字以内\033[0mで入力してください。\n");
+  insertLineBreak(1);
 }
 
 void displayRitchieDiningMessage() {
