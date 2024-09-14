@@ -34,9 +34,10 @@ int main(void){
   // (2)ゲームをはじめますか？
   // -----------------------------------------------------
   displayStartGameOptionMessage();
-  
+
   int gameStartAnswer;
   String OpenTreasurePassword;
+  String secretPassword = "web";
   scanf("%d", &gameStartAnswer);
   insertLineBreak(30);
   printf("--------------------------------------------\n");
@@ -52,7 +53,7 @@ int main(void){
     printf("宝箱を開けるためのパスワードを入力してください。\n");
     scanf("%s", OpenTreasurePassword);
 
-    if(strcmp(OpenTreasurePassword, "web") == 0) {
+    if(strcmp(OpenTreasurePassword, secretPassword) == 0) {
       displayGameClearMessage();
       exit(1);
     }else{
