@@ -151,10 +151,6 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, &userAttackPoint);
-        // RitchieHp -= userAttackPoint;
-        // if (RitchieHp < 0) {
-        //   RitchieHp = 0;
-        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -170,10 +166,6 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, &userAttackPoint);
-        // RitchieHp -= userAttackPoint;
-        // if (RitchieHp < 0) {
-        //   RitchieHp = 0;
-        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -189,10 +181,6 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, &userAttackPoint);
-        // RitchieHp -= userAttackPoint;
-        // if (RitchieHp < 0) {
-        //   RitchieHp = 0;
-        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -208,10 +196,6 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, &userAttackPoint);
-        // RitchieHp -= userAttackPoint;
-        // if (RitchieHp < 0) {
-        //   RitchieHp = 0;
-        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -245,10 +229,6 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, &userAttackPoint);
-        // RitchieHp -= userAttackPoint;
-        // if (RitchieHp < 0) {
-        //   RitchieHp = 0;
-        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -263,10 +243,6 @@ int main(void){
           case 0:
             displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
             decreaseHp(&RitchieHp, &userAttackPoint);
-            // RitchieHp -= userAttackPoint;
-            // if (RitchieHp < 0) {
-            //   RitchieHp = 0;
-            // }
             displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
             displayRitchieDiningMessage();
             break;
@@ -281,10 +257,6 @@ int main(void){
           case 0:
             displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
             decreaseHp(&RitchieHp, &userAttackPoint);
-            // RitchieHp -= userAttackPoint;
-            // if (RitchieHp < 0) {
-            //   RitchieHp = 0;
-            // }
             displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
             displayRitchieDiningMessage();
             break;
@@ -299,10 +271,6 @@ int main(void){
           case 0:
             displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
             decreaseHp(&RitchieHp, &userAttackPoint);
-            // RitchieHp -= userAttackPoint;
-            // if (RitchieHp < 0) {
-            //   RitchieHp = 0;
-            // }
             displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
             displayRitchieDiningMessage();
             break;
