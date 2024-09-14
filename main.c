@@ -78,14 +78,13 @@ int main(void){
   // (5)職業を選んでください。
   // -----------------------------------------------------
   int job;
+  int userHp;
+  int userFullHp;
+  int userAttackPoint;
   insertLineBreak(1);
   printf("\033[35m%s\033[0mの職業を\033[33m1~4の中から\033[0m選択してください。\n", userName);
   displayJobs();
   scanf("%d", &job); // 職業選択
-  insertLineBreak(30);
-  int userHp;
-  int userFullHp;
-  int userAttackPoint;
   setUpUserJob(job, userName, &userHp, &userFullHp, &userAttackPoint);
 
   // -----------------------------------------------------
@@ -403,6 +402,7 @@ void displayRitchieDiningMessage() {
 }
 
 void setUpUserJob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint) {
+  insertLineBreak(30);
   switch (job) {
   case 1:
     printf("\033[35m%s\033[0mは\033[91m勇者\033[0mを選んだ。\n", userName);
