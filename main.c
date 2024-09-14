@@ -235,48 +235,52 @@ int main(void){
         displayErrorMessage("存在しない技が選択されました。");
         exit(1);
       }
-      case 2:
-        displayAttackOption(stageNumber);
-        scanf("%d", &userAttackType);
-        switch (userAttackType) {
-          case 0:
-            displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-            decreaseHp(&RitchieHp, &userAttackPoint);
-            displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-            displayRitchieDiningMessage();
-            break;
-          default:
-            displayErrorMessage("存在しない技が選択されました。");
-            exit(1);
-        }
-      case 3:
-        displayAttackOption(stageNumber);
-        scanf("%d", &userAttackType);
-        switch (userAttackType) {
-          case 0:
-            displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-            decreaseHp(&RitchieHp, &userAttackPoint);
-            displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-            displayRitchieDiningMessage();
-            break;
-          default:
-            displayErrorMessage("存在しない技が選択されました。");
-            exit(1);
-        }
+      break;
+    case 2:
+      displayAttackOption(stageNumber);
+      scanf("%d", &userAttackType);
+      switch (userAttackType) {
+      case 0:
+        displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
+        decreaseHp(&RitchieHp, &userAttackPoint);
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayRitchieDiningMessage();
+        break;
+      default:
+        displayErrorMessage("存在しない技が選択されました。");
+        exit(1);
+      }
+      break;
+    case 3:
+      displayAttackOption(stageNumber);
+      scanf("%d", &userAttackType);
+      switch (userAttackType) {
+      case 0:
+        displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
+        decreaseHp(&RitchieHp, &userAttackPoint);
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayRitchieDiningMessage();
+        break;
+      default:
+        displayErrorMessage("存在しない技が選択されました。");
+        exit(1);
+      }
+      break;
       case 4:
         displayAttackOption(stageNumber);
         scanf("%d", &userAttackType);
         switch (userAttackType) {
-          case 0:
-            displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-            decreaseHp(&RitchieHp, &userAttackPoint);
-            displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-            displayRitchieDiningMessage();
-            break;
-          default:
-            displayErrorMessage("存在しない技が選択されました。");
-            exit(1);
+        case 0:
+          displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
+          decreaseHp(&RitchieHp, &userAttackPoint);
+          displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+          displayRitchieDiningMessage();
+          break;
+        default:
+          displayErrorMessage("存在しない技が選択されました。");
+          exit(1);
         }
+        break;
       }
       break;
   }
