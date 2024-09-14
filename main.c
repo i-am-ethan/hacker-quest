@@ -205,6 +205,7 @@ int main(void){
       }
       break;
     }
+    break;
     // switch job 終わり ----------
 
   // 後攻の場合
@@ -215,9 +216,7 @@ int main(void){
     printf("リッチーは\033[91m攻撃\033[0mをしてきた...!!!\n");
     printf("\033[35m%s\033[0mは\033[91m%d\033[0mのダメージを受けた...!!!\n", userName, RitchieAttackPoint);
     userHp -= RitchieAttackPoint;
-    insertLineBreak(2);
     displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-    insertLineBreak(1);
     printf("攻撃を選んでください。\n");
     insertLineBreak(1);
     switch (job) {
@@ -425,6 +424,7 @@ void displayErrorMessage(String ErrorMessage) {
 }
 
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int enemyHp, int enemyFullHp, int enemyAttackPoint) {
+  insertLineBreak(1);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
   printf("%sの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", enemyName, enemyHp, enemyFullHp, enemyAttackPoint);
   printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
