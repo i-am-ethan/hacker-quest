@@ -8,6 +8,9 @@ typedef char String[1024];
 void displayTitle();
 void displayJobs();
 void displayGameClearMessage();
+void insertLineBreak(int lineCount);
+void displayRitchieDiningMessage();
+void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
 
 int main(void){
   // -----------------------------------------------------
@@ -31,42 +34,29 @@ int main(void){
   int gameStartAnswer;
   String OpenTreasurePassword;
   scanf("%d", &gameStartAnswer);
-  for (int i = 0; i <= 30; i++){
-    printf("\n");
-  }
+  insertLineBreak(30);
   printf("--------------------------------------------\n");
 
   // -----------------------------------------------------
-  // (3)ゲームをはじめない場合は早期リターン
+  // (3)ゲームをはじめるorはじめないor宝箱を開ける
   // -----------------------------------------------------
   switch (gameStartAnswer) {
-    case 0:
-      printf("ゲームを終了しました(code:%d)\n", gameStartAnswer);
-      exit(1); //終了
-    case 7:
-
-      printf("宝箱を開けるためのパスワードを入力してください。\n");
-      scanf("%s", OpenTreasurePassword);
-
-      if(strcmp(OpenTreasurePassword, "web") == 0) {
-        for (int i = 0; i <= 30; i++){
-          printf("\n");
-        }
-        displayGameClearMessage();
-        exit(1);
-        
-      }else{
-        printf("パスワードが違います。ゲームを終了します。");
-        exit(1);
-      }
-    
-
-  }
-  if(!gameStartAnswer) {
+  case 0:
     printf("ゲームを終了しました(code:%d)\n", gameStartAnswer);
     exit(1); //終了
-  }
+  case 7:
+    printf("宝箱を開けるためのパスワードを入力してください。\n");
+    scanf("%s", OpenTreasurePassword);
 
+    if(strcmp(OpenTreasurePassword, "web") == 0) {
+      insertLineBreak(30);
+      displayGameClearMessage();
+      exit(1);
+    }else{
+      printf("パスワードが違います。ゲームを終了します。");
+      exit(1);
+    }
+  }
 
   // -----------------------------------------------------
   // (4)主人公の名前を8文字以内で入力してください。
@@ -80,9 +70,7 @@ int main(void){
     printf("testユーザーのため処理を中止します。");
     exit(1);
   }
-  for (int i = 0; i <= 30; i++){
-    printf("\n");
-  }
+  insertLineBreak(30);
   printf("こんにちは\033[35m%s\033[0m。かっこいい名前ですね。\n", userName);
   printf("--------------------------------------------\n");
   // -----------------------------------------------------
@@ -95,50 +83,11 @@ int main(void){
   displayJobs();
   printf("\n");
   scanf("%d", &job); // 職業選択
-  for (int i = 0; i <= 30; i++){
-    printf("\n");
-  }
+  insertLineBreak(30);
   int userHp;
   int userFullHp;
   int userAttackPoint;
-  switch (job) {
-    case 1:
-      printf("\033[35m%s\033[0mは\033[91m勇者\033[0mを選んだ。\n", userName);
-      printf("不思議な力によりHPと攻撃力が付与された。\n");
-      printf("\033[44mHP: 200\033[0m, \033[41m攻撃力: 80\033[0m\n");
-      userHp = 200;
-      userFullHp = 200;
-      userAttackPoint = 80;
-      break;
-    case 2:
-      printf("\033[35m%s\033[0mは\033[94m魔法使い\033[0mを選んだ。\n", userName);
-      printf("不思議な力によりHPと攻撃力が付与された。\n");
-      printf("\033[44mHP: 200\033[0m, \033[41m攻撃力: 80\033[0m\n");
-      userHp = 200;
-      userFullHp = 200;
-      userAttackPoint = 80;
-      break;
-    case 3:
-      printf("\033[35m%s\033[0mは\033[96mニート\033[0mを選んだ。\n", userName);
-      printf("不思議な力によりHPと攻撃力が付与された。\n");
-      printf("\033[44mHP: 20\033[0m, \033[41m攻撃力: 20\033[0m\n");
-      userHp = 20;
-      userFullHp = 20;
-      userAttackPoint = 20;
-      break;
-    case 4:
-      printf("\033[35m%s\033[0mは\033[92mエンジニア\033[0mを選んだ。\n", userName);
-      printf("不思議な力によりHPと攻撃力が付与された。\n");
-      printf("\033[44mHP: 40\033[0m, \033[41m攻撃力: 40\033[0m\n");
-      userHp = 40;
-      userFullHp = 40;
-      userAttackPoint = 40;
-      break;
-    default:
-      printf("無効な数字が入力されました。\nゲームを終了します。");
-      exit(1);
-  }
-  printf("--------------------------------------------\n");
+  setUpUserjob(job, userName, &userHp, &userFullHp, &userAttackPoint);
 
   // -----------------------------------------------------
   // (6)クエストに挑戦する準備はできましたか？
@@ -155,9 +104,7 @@ int main(void){
     exit(1);
   }
   printf("--------------------------------------------\n");
-  for (int i = 0; i <= 24; i++){
-    printf("\n");
-  }
+  insertLineBreak(24);
   // -----------------------------------------------------
   // (7)バトル開始〜〜〜〜〜
   // -----------------------------------------------------
@@ -186,9 +133,7 @@ int main(void){
   if(!isBattleStart){
     printf("ゲームを終了します。code(%d)", isBattleStart);
   }
-  for (int i = 0; i <= 20; i++){
-    printf("\n");
-  }
+  insertLineBreak(20);
   // -----------------------------------------------------
   // (8-1)先攻と後攻を決める処理
   // -----------------------------------------------------
@@ -215,9 +160,7 @@ int main(void){
           scanf("%d", &userAttackType);
           switch (userAttackType) {
             case 0:
-              for (int i = 0; i <= 24; i++){
-                printf("\n");
-              }
+              insertLineBreak(24);
               printf("--------------------------------------------\n");
               printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
               printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
@@ -229,10 +172,7 @@ int main(void){
               printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
               printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
               printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              printf("リッチーのHPは0になった...!!!\n");
-              printf("リッチーはメッセージを残して息絶えた...\n");
-              printf("\n");
-              printf("「The only way to learn a new programming language is by writing programs in it.」(「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」)\n");
+              displayRitchieDiningMessage();
               break;
             default:
               printf("ゲームを終了します。code(%d)", userAttackType);
@@ -244,9 +184,7 @@ int main(void){
           scanf("%d", &userAttackType);
           switch (userAttackType) {
             case 0:
-              for (int i = 0; i <= 24; i++){
-                printf("\n");
-              }
+              insertLineBreak(24);
               printf("--------------------------------------------\n");
               printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
               printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
@@ -258,10 +196,7 @@ int main(void){
               printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
               printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
               printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              printf("リッチーのHPは0になった...!!!\n");
-              printf("リッチーはメッセージを残して息絶えた...\n");
-              printf("\n");
-              printf("「The only way to learn a new programming language is by writing programs in it.」(「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」)\n");
+              displayRitchieDiningMessage();
               break;
             default:
               printf("ゲームを終了します。code(%d)", userAttackType);
@@ -273,9 +208,7 @@ int main(void){
           scanf("%d", &userAttackType);
           switch (userAttackType) {
             case 0:
-              for (int i = 0; i <= 24; i++){
-                printf("\n");
-              }
+              insertLineBreak(24);
               printf("--------------------------------------------\n");
               printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
               printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
@@ -287,10 +220,7 @@ int main(void){
               printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
               printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
               printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              printf("リッチーのHPは0になった...!!!\n");
-              printf("リッチーはメッセージを残して息絶えた...\n");
-              printf("\n");
-              printf("「The only way to learn a new programming language is by writing programs in it.」(「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」)\n");
+              displayRitchieDiningMessage();
               break;
             default:
               printf("ゲームを終了します。code(%d)", userAttackType);
@@ -302,9 +232,7 @@ int main(void){
           scanf("%d", &userAttackType);
           switch (userAttackType) {
             case 0:
-              for (int i = 0; i <= 24; i++){
-                printf("\n");
-              }
+              insertLineBreak(24);
               printf("--------------------------------------------\n");
               printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
               printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
@@ -316,10 +244,7 @@ int main(void){
               printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
               printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
               printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              printf("リッチーのHPは0になった...!!!\n");
-              printf("リッチーはメッセージを残して息絶えた...\n");
-              printf("\n");
-              printf("「The only way to learn a new programming language is by writing programs in it.」(「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」)\n");
+              displayRitchieDiningMessage();
               break;
             default:
               printf("ゲームを終了します。code(%d)", userAttackType);
@@ -353,9 +278,7 @@ int main(void){
           scanf("%d", &userAttackType);
           switch (userAttackType) {
             case 0:
-              for (int i = 0; i <= 20; i++){
-                printf("\n");
-              }
+              insertLineBreak(20);
               printf("--------------------------------------------\n");
               printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
               printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
@@ -367,10 +290,7 @@ int main(void){
               printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
               printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
               printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              printf("リッチーのHPは0になった...!!!\n");
-              printf("リッチーはメッセージを残して息絶えた...\n");
-              printf("\n");
-              printf("「The only way to learn a new programming language is by writing programs in it.」(「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」)\n");
+              displayRitchieDiningMessage();
               break;
             default:
               printf("ゲームを終了します。code(%d)", userAttackType);
@@ -382,9 +302,7 @@ int main(void){
           scanf("%d", &userAttackType);
           switch (userAttackType) {
             case 0:
-              for (int i = 0; i <= 20; i++){
-                printf("\n");
-              }
+              insertLineBreak(20);
               printf("--------------------------------------------\n");
               printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
               printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
@@ -396,10 +314,7 @@ int main(void){
               printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
               printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
               printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              printf("リッチーのHPは0になった...!!!\n");
-              printf("リッチーはメッセージを残して息絶えた...\n");
-              printf("\n");
-              printf("「The only way to learn a new programming language is by writing programs in it.」(「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」)\n");
+              displayRitchieDiningMessage();
               break;
             default:
               printf("ゲームを終了します。code(%d)", userAttackType);
@@ -411,9 +326,7 @@ int main(void){
           scanf("%d", &userAttackType);
           switch (userAttackType) {
             case 0:
-              for (int i = 0; i <= 20; i++){
-                printf("\n");
-              }
+              insertLineBreak(20);
               printf("--------------------------------------------\n");
               printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
               printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
@@ -425,10 +338,7 @@ int main(void){
               printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
               printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
               printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              printf("リッチーのHPは0になった...!!!\n");
-              printf("リッチーはメッセージを残して息絶えた...\n");
-              printf("\n");
-              printf("「The only way to learn a new programming language is by writing programs in it.」(「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」)\n");
+              displayRitchieDiningMessage();
               break;
             default:
               printf("ゲームを終了します。code(%d)", userAttackType);
@@ -440,9 +350,7 @@ int main(void){
           scanf("%d", &userAttackType);
           switch (userAttackType) {
             case 0:
-              for (int i = 0; i <= 20; i++){
-                printf("\n");
-              }
+              insertLineBreak(20);
               printf("--------------------------------------------\n");
               printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
               printf("リッチーは%dのダメージを受けた...!!!\n", userAttackPoint);
@@ -454,10 +362,7 @@ int main(void){
               printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
               printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
               printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              printf("リッチーのHPは0になった...!!!\n");
-              printf("リッチーはメッセージを残して息絶えた...\n");
-              printf("\n");
-              printf("「The only way to learn a new programming language is by writing programs in it.」(「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」)\n");
+              displayRitchieDiningMessage();
               break;
             default:
               printf("ゲームを終了します。code(%d)", userAttackType);
@@ -523,4 +428,59 @@ void displayGameClearMessage() {
   printf("\033[43mこれでこのゲームを終わります!!!\033[0m\n\n");
   printf("\033[43mチャレンジありがとうございました!!!\033[0m\n\n");
   printf("\033[43m---- Hacker Quest\033[0m\n\n");
+}
+
+void insertLineBreak(int lineCount) {
+  for (int i = 0; i <= lineCount; i++){
+    printf("\n");
+  }
+}
+
+void displayRitchieDiningMessage() {
+  printf("リッチーのHPは0になった...!!!\n");
+  printf("リッチーはメッセージを残して息絶えた...\n");
+  printf("\n");
+  printf("\033[42m「The only way to learn a new programming language is by writing programs in it.」\033[0m\n"); 
+  printf("\033[42m「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」\033[0m\n"); 
+}
+
+void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint) {
+  switch (job) {
+  case 1:
+    printf("\033[35m%s\033[0mは\033[91m勇者\033[0mを選んだ。\n", userName);
+    printf("不思議な力によりHPと攻撃力が付与された。\n");
+    printf("\033[44mHP: 200\033[0m, \033[41m攻撃力: 80\033[0m\n");
+    *userHp = 200;
+    *userFullHp = 200;
+    *userAttackPoint = 80;
+    break;
+  case 2:
+    printf("\033[35m%s\033[0mは\033[94m魔法使い\033[0mを選んだ。\n", userName);
+    printf("不思議な力によりHPと攻撃力が付与された。\n");
+    printf("\033[44mHP: 200\033[0m, \033[41m攻撃力: 80\033[0m\n");
+    *userHp = 200;
+    *userFullHp = 200;
+    *userAttackPoint = 80;
+    break;
+  case 3:
+    printf("\033[35m%s\033[0mは\033[96mニート\033[0mを選んだ。\n", userName);
+    printf("不思議な力によりHPと攻撃力が付与された。\n");
+    printf("\033[44mHP: 20\033[0m, \033[41m攻撃力: 20\033[0m\n");
+    *userHp = 20;
+    *userFullHp = 20;
+    *userAttackPoint = 20;
+    break;
+  case 4:
+    printf("\033[35m%s\033[0mは\033[92mエンジニア\033[0mを選んだ。\n", userName);
+    printf("不思議な力によりHPと攻撃力が付与された。\n");
+    printf("\033[44mHP: 40\033[0m, \033[41m攻撃力: 40\033[0m\n");
+    *userHp = 40;
+    *userFullHp = 40;
+    *userAttackPoint = 40;
+    break;
+  default:
+    printf("無効な数字が入力されました。\nゲームを終了します。");
+    exit(1);
+  }
+  printf("--------------------------------------------\n");
 }
