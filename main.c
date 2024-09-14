@@ -14,6 +14,7 @@ void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *u
 void displayErrorMessage(String ErrorMessage);
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int enemyHp, int enemyFullHp, int enemyAttackPoint);
 void displayAttackOption(int stageNumber);
+void displayFirstStageOpeningMessage();
 
 int stageNumber;
 
@@ -123,12 +124,13 @@ int main(void){
   int RitchieAttackPoint = 10;
   stageNumber = 1;
   
-  printf("--------------------------------------------\n");
-  printf("\033[45m野生のリッチーが現れた...!!!\033[0m\n");
-  insertLineBreak(1);
-  printf("デニス・リッチー:\n");
-  printf("C言語の開発者であり、Unixオペレーティングシステムの共同開発者。\n");
-  insertLineBreak(1);
+  displayFirstStageOpeningMessage();
+  // printf("--------------------------------------------\n");
+  // printf("\033[45m野生のリッチーが現れた...!!!\033[0m\n");
+  // insertLineBreak(1);
+  // printf("デニス・リッチー:\n");
+  // printf("C言語の開発者であり、Unixオペレーティングシステムの共同開発者。\n");
+  // insertLineBreak(1);
   displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
   insertLineBreak(1);
   int isBattleStart;
@@ -483,3 +485,12 @@ void displayAttackOption(int stageNumber) {
     break;
   };
 };
+
+void displayFirstStageOpeningMessage() {
+  printf("--------------------------------------------\n");
+  printf("\033[45m野生のリッチーが現れた...!!!\033[0m\n");
+  insertLineBreak(1);
+  printf("デニス・リッチー:\n");
+  printf("C言語の開発者であり、Unixオペレーティングシステムの共同開発者。\n");
+  insertLineBreak(1);
+}
