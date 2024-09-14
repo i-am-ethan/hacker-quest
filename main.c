@@ -158,9 +158,7 @@ int main(void){
     insertLineBreak(1);
     switch (job) {
     case 1:
-      displayAttackOption(stageNumber);
-      // printf("0:攻撃, 1:未修得\n");
-      // printf("\033[33m0を入力してください。\033[0m\n");
+      displayAttackOption(stageNumber);      
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -182,8 +180,6 @@ int main(void){
       break;
     case 2:
       displayAttackOption(stageNumber);
-      // printf("0:攻撃, 1:未修得\n");
-      // printf("\033[33m0を入力してください。\033[0m\n");
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -205,8 +201,6 @@ int main(void){
       break;
     case 3:
       displayAttackOption(stageNumber);
-      // printf("0:攻撃, 1:未修得\n");
-      // printf("\033[33m0を入力してください。\033[0m\n");
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -228,8 +222,6 @@ int main(void){
       break;
     case 4:
       displayAttackOption(stageNumber);
-      // printf("0:攻撃, 1:未修得\n");
-      // printf("\033[33m0を入力してください。\033[0m\n");
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -269,8 +261,6 @@ int main(void){
     // 職業の種類
     case 1:
       displayAttackOption(stageNumber);
-      // printf("0:攻撃, 1:未修得\n");
-      // printf("\033[33m0を入力してください。\033[0m\n");
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
@@ -291,8 +281,6 @@ int main(void){
       }
       case 2:
         displayAttackOption(stageNumber);
-        // printf("0:攻撃, 1:未修得\n");
-        // printf("\033[33m0を入力してください。\033[0m\n");
         scanf("%d", &userAttackType);
         switch (userAttackType) {
           case 0:
@@ -313,8 +301,6 @@ int main(void){
         }
       case 3:
         displayAttackOption(stageNumber);
-        // printf("0:攻撃, 1:未修得\n");
-        // printf("\033[33m0を入力してください。\033[0m\n");
         scanf("%d", &userAttackType);
         switch (userAttackType) {
           case 0:
@@ -335,8 +321,6 @@ int main(void){
         }
       case 4:
         displayAttackOption(stageNumber);
-        // printf("0:攻撃, 1:未修得\n");
-        // printf("\033[33m0を入力してください。\033[0m\n");
         scanf("%d", &userAttackType);
         switch (userAttackType) {
           case 0:
