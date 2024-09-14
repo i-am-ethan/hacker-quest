@@ -21,6 +21,7 @@ void displayFirstStageOpeningMessage();
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
 void decreaseHp(int *hp, int *damage);
 void displayFirstAttackMessage(String userName);
+void displaySecondAttackMessage(String userName);
 
 int stageNumber;
 
@@ -198,9 +199,7 @@ int main(void){
 
   // 後攻の場合
   case 1:
-    printf("--------------------------------------------\n");
-    printf("\033[35m%s\033[0mは後攻になった...!!!\n", userName);
-    insertLineBreak(2);
+    displayFirstAttackMessage(userName);
     printf("リッチーは\033[91m攻撃\033[0mをしてきた...!!!\n");
     printf("\033[35m%s\033[0mは\033[91m%d\033[0mのダメージを受けた...!!!\n", userName, RitchieAttackPoint);
     userHp -= RitchieAttackPoint;
@@ -478,4 +477,9 @@ void displayFirstAttackMessage(String userName) {
   insertLineBreak(2);
   printf("攻撃を選んでください。\n");
   insertLineBreak(1);
+}
+void displaySecondAttackMessage(String userName) {
+  printf("--------------------------------------------\n");
+  printf("\033[35m%s\033[0mは後攻になった...!!!\n", userName);
+  insertLineBreak(2);
 }
