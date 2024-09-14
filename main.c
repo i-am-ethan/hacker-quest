@@ -14,7 +14,7 @@ void displayUserNameFeedBackMessage(String userName);
 void insertLineBreak(int lineCount);
 void displayRitchieDiningMessage();
 void setUpUserJob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
-void displayErrorMessage(String ErrorMessage);
+void exitAndDisplayErrorMessage(String errorMessage);
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int enemyHp, int enemyFullHp, int enemyAttackPoint);
 void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
@@ -50,17 +50,14 @@ int main(void){
   // -----------------------------------------------------
   switch (gameStartAnswer) {
   case 0:
-    displayErrorMessage("");
-    exit(1); //終了
+    exitAndDisplayErrorMessage("");
   case 7:
     printf("宝箱を開けるためのパスワードを入力してください。\n");
     scanf("%s", OpenTreasurePassword);
     if(strcmp(OpenTreasurePassword, secretPassword) == 0) {
       displayGameClearMessage();
-      exit(1);
     }else{
-      displayErrorMessage("パスワードが違います。");
-      exit(1);
+      exitAndDisplayErrorMessage("パスワードが違います。");
     }
   }
 
@@ -71,8 +68,7 @@ int main(void){
   displayUserNameRequestMessage();
   scanf("%8s", userName); // 8文字で切っちゃう。
   if(strcmp(userName, "test") == 0) {
-    displayErrorMessage("testユーザーが選択されました。");
-    exit(1);
+    exitAndDisplayErrorMessage("testユーザーが選択されました。");
   }
   displayUserNameFeedBackMessage(userName);
   // -----------------------------------------------------
@@ -99,8 +95,7 @@ int main(void){
   scanf("%d", &questStartAnswer);
   insertLineBreak(1);
   if (!questStartAnswer) {
-    displayErrorMessage("クエストに挑戦する準備ができていないようです。");
-    exit(1);
+    exitAndDisplayErrorMessage("クエストに挑戦する準備ができていないようです。");
   }
   printf("--------------------------------------------\n");
   insertLineBreak(24);
@@ -124,7 +119,7 @@ int main(void){
   printf("(0:いいえ or 1:はい)\n");
   scanf("%d", &isBattleStart);
   if(!isBattleStart){
-    displayErrorMessage("バトルに挑戦する準備ができていないようです。");
+    exitAndDisplayErrorMessage("バトルに挑戦する準備ができていないようです。");
   }
   insertLineBreak(20);
   // -----------------------------------------------------
@@ -155,8 +150,7 @@ int main(void){
         displayRitchieDiningMessage();
         break;
       default:
-        displayErrorMessage("存在しない技が選択されました。");
-        exit(1);
+        exitAndDisplayErrorMessage("存在しない技が選択されました。");
       }
       break;
     case 2:
@@ -170,8 +164,7 @@ int main(void){
         displayRitchieDiningMessage();
         break;
       default:
-        displayErrorMessage("存在しない技が選択されました。");
-        exit(1);
+        exitAndDisplayErrorMessage("存在しない技が選択されました。");
       }
       break;
     case 3:
@@ -185,8 +178,7 @@ int main(void){
         displayRitchieDiningMessage();
         break;
       default:
-        displayErrorMessage("存在しない技が選択されました。");
-        exit(1);
+        exitAndDisplayErrorMessage("存在しない技が選択されました。");
       }
       break;
     case 4:
@@ -200,8 +192,7 @@ int main(void){
         displayRitchieDiningMessage();
         break;
       default:
-        displayErrorMessage("存在しない技が選択されました。");
-        exit(1);
+        exitAndDisplayErrorMessage("存在しない技が選択されました。");
       }
       break;
     }
@@ -232,8 +223,7 @@ int main(void){
         displayRitchieDiningMessage();
         break;
       default:
-        displayErrorMessage("存在しない技が選択されました。");
-        exit(1);
+        exitAndDisplayErrorMessage("存在しない技が選択されました。");        
       }
       break;
     case 2:
@@ -247,8 +237,7 @@ int main(void){
         displayRitchieDiningMessage();
         break;
       default:
-        displayErrorMessage("存在しない技が選択されました。");
-        exit(1);
+        exitAndDisplayErrorMessage("存在しない技が選択されました。");
       }
       break;
     case 3:
@@ -262,8 +251,7 @@ int main(void){
         displayRitchieDiningMessage();
         break;
       default:
-        displayErrorMessage("存在しない技が選択されました。");
-        exit(1);
+        exitAndDisplayErrorMessage("存在しない技が選択されました。");
       }
       break;
       case 4:
@@ -277,8 +265,7 @@ int main(void){
           displayRitchieDiningMessage();
           break;
         default:
-          displayErrorMessage("存在しない技が選択されました。");
-          exit(1);
+          exitAndDisplayErrorMessage("存在しない技が選択されました。");
         }
         break;
       }
@@ -292,7 +279,7 @@ int main(void){
   printf("(0:いいえ or 1:はい)\n");
   scanf("%d", &isBattleStart);
   if(!isBattleStart){
-    displayErrorMessage("バトルに挑戦する準備ができていないようです。");
+    exitAndDisplayErrorMessage("バトルに挑戦する準備ができていないようです。");
   }
 
   // -----------------------------------------------------
@@ -430,8 +417,12 @@ void setUpUserJob(int job, String userName, int *userHp, int *userFullHp, int *u
   printf("--------------------------------------------\n");
 }
 
-void displayErrorMessage(String ErrorMessage) {
-  printf("%sゲームを終了しました。\n", ErrorMessage);
+void exitAndDisplayErrorMessage(String errorMessage) {
+  if(strcmp(errorMessage, "") != 0) {
+    printf("%s\n", errorMessage);
+  }
+  printf("ゲームを終了しました。\n");
+  exit(1);
 }
 
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int enemyHp, int enemyFullHp, int enemyAttackPoint) {
