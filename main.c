@@ -86,9 +86,7 @@ int main(void){
   int job;
   insertLineBreak(1);
   printf("\033[35m%s\033[0mの職業を\033[33m1~4の中から\033[0m選択してください。\n", userName);
-  insertLineBreak(1);
   displayJobs();
-  insertLineBreak(1);
   scanf("%d", &job); // 職業選択
   insertLineBreak(30);
   int userHp;
@@ -354,6 +352,7 @@ void displayTitle() {
 };
 
 void displayJobs() {
+  insertLineBreak(1);
   printf("1:\033[91m勇者\033[0m\n");
   printf("たまに一撃必殺の攻撃力を得る。\n");
   printf("2:\033[94m魔法使い\033[0m\n");
@@ -362,6 +361,7 @@ void displayJobs() {
   printf("基本弱い。たまにとんでもなくやる気が出る。\n");
   printf("4:\033[92mエンジニア\033[0m\n");
   printf("勉強が好き、ハッキングのヒントを得たいと思っている。\n");
+  insertLineBreak(1);
 };
 
 void displayGameClearMessage() {
