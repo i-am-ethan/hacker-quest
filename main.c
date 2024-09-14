@@ -20,6 +20,7 @@ void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
 void decreaseHp(int *hp, int *damage);
+void displayFirstAttackMessage(String userName);
 
 int stageNumber;
 
@@ -133,11 +134,12 @@ int main(void){
   switch (isUserFirstAttachForFirstStage) {
   // 先攻の場合-----------------------------------------------
   case 0:
-    printf("--------------------------------------------\n");
-    printf("\033[35m%s\033[0mが先攻になった...!!!\n", userName);
-    insertLineBreak(2);
-    printf("攻撃を選んでください。\n");
-    insertLineBreak(1);
+    displayFirstAttackMessage(userName);
+    // printf("--------------------------------------------\n");
+    // printf("\033[35m%s\033[0mが先攻になった...!!!\n", userName);
+    // insertLineBreak(2);
+    // printf("攻撃を選んでください。\n");
+    // insertLineBreak(1);
     switch (job) {
     case 1:
       displayAttackOption(stageNumber);      
@@ -473,4 +475,12 @@ void decreaseHp(int *hp, int *damage) {
   if (*hp < 0) {
     *hp = 0;
   }
+}
+
+void displayFirstAttackMessage(String userName) {
+  printf("--------------------------------------------\n");
+  printf("\033[35m%s\033[0mが先攻になった...!!!\n", userName);
+  insertLineBreak(2);
+  printf("攻撃を選んでください。\n");
+  insertLineBreak(1);
 }
