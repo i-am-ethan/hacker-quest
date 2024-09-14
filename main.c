@@ -11,6 +11,7 @@ void displayGameClearMessage();
 void insertLineBreak(int lineCount);
 void displayRitchieDiningMessage();
 void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
+void displayErrorMessage(String ErrorMessage);
 
 int main(void){
   // -----------------------------------------------------
@@ -42,7 +43,7 @@ int main(void){
   // -----------------------------------------------------
   switch (gameStartAnswer) {
   case 0:
-    printf("ゲームを終了しました(code:%d)\n", gameStartAnswer);
+    displayErrorMessage("");
     exit(1); //終了
   case 7:
     printf("宝箱を開けるためのパスワードを入力してください。\n");
@@ -53,7 +54,7 @@ int main(void){
       displayGameClearMessage();
       exit(1);
     }else{
-      printf("パスワードが違います。ゲームを終了します。");
+      displayErrorMessage("パスワードが違います。");
       exit(1);
     }
   }
@@ -67,7 +68,7 @@ int main(void){
   printf("\n");
   scanf("%8s", userName); // 8文字で切っちゃう。
   if(strcmp(userName, "test") == 0) {
-    printf("testユーザーのため処理を中止します。");
+    displayErrorMessage("testユーザーが選択されました。");
     exit(1);
   }
   insertLineBreak(30);
@@ -100,7 +101,7 @@ int main(void){
   scanf("%d", &questStartAnswer);
   printf("\n");
   if (!questStartAnswer) {
-    printf("ゲーム終了:code(%d)\n", questStartAnswer);
+    displayErrorMessage("クエストに挑戦する準備ができていないようです。");
     exit(1);
   }
   printf("--------------------------------------------\n");
@@ -131,7 +132,7 @@ int main(void){
   printf("(0:いいえ or 1:はい)\n");
   scanf("%d", &isBattleStart);
   if(!isBattleStart){
-    printf("ゲームを終了します。code(%d)", isBattleStart);
+    displayErrorMessage("バトルに挑戦する準備ができていないようです。");
   }
   insertLineBreak(20);
   // -----------------------------------------------------
@@ -175,7 +176,7 @@ int main(void){
               displayRitchieDiningMessage();
               break;
             default:
-              printf("ゲームを終了します。code(%d)", userAttackType);
+              displayErrorMessage("存在しない技が選択されました。");
               exit(1);
           }
         case 2:
@@ -199,7 +200,7 @@ int main(void){
               displayRitchieDiningMessage();
               break;
             default:
-              printf("ゲームを終了します。code(%d)", userAttackType);
+              displayErrorMessage("存在しない技が選択されました。");
               exit(1);
           }
         case 3:
@@ -223,7 +224,7 @@ int main(void){
               displayRitchieDiningMessage();
               break;
             default:
-              printf("ゲームを終了します。code(%d)", userAttackType);
+              displayErrorMessage("存在しない技が選択されました。");
               exit(1);
           }
         case 4:
@@ -247,7 +248,7 @@ int main(void){
               displayRitchieDiningMessage();
               break;
             default:
-              printf("ゲームを終了します。code(%d)", userAttackType);
+              displayErrorMessage("存在しない技が選択されました。");
               exit(1);
           }
       }
@@ -293,7 +294,7 @@ int main(void){
               displayRitchieDiningMessage();
               break;
             default:
-              printf("ゲームを終了します。code(%d)", userAttackType);
+              displayErrorMessage("存在しない技が選択されました。");
               exit(1);
           }
         case 2:
@@ -317,7 +318,7 @@ int main(void){
               displayRitchieDiningMessage();
               break;
             default:
-              printf("ゲームを終了します。code(%d)", userAttackType);
+              displayErrorMessage("存在しない技が選択されました。");
               exit(1);
           }
         case 3:
@@ -341,7 +342,7 @@ int main(void){
               displayRitchieDiningMessage();
               break;
             default:
-              printf("ゲームを終了します。code(%d)", userAttackType);
+              displayErrorMessage("存在しない技が選択されました。");
               exit(1);
           }
         case 4:
@@ -365,7 +366,7 @@ int main(void){
               displayRitchieDiningMessage();
               break;
             default:
-              printf("ゲームを終了します。code(%d)", userAttackType);
+              displayErrorMessage("存在しない技が選択されました。");
               exit(1);
           }
       }
@@ -483,4 +484,8 @@ void setUpUserjob(int job, String userName, int *userHp, int *userFullHp, int *u
     exit(1);
   }
   printf("--------------------------------------------\n");
+}
+
+void displayErrorMessage(String ErrorMessage) {
+  printf("%sゲームを終了しました。\n", ErrorMessage);
 }
