@@ -135,11 +135,6 @@ int main(void){
   // 先攻の場合-----------------------------------------------
   case 0:
     displayFirstAttackMessage(userName);
-    // printf("--------------------------------------------\n");
-    // printf("\033[35m%s\033[0mが先攻になった...!!!\n", userName);
-    // insertLineBreak(2);
-    // printf("攻撃を選んでください。\n");
-    // insertLineBreak(1);
     switch (job) {
     case 1:
       displayAttackOption(stageNumber);      
