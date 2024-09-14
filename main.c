@@ -125,10 +125,6 @@ int main(void){
   printf("C言語の開発者であり、Unixオペレーティングシステムの共同開発者。\n");
   printf("\n");
   displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-  // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-  // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-  // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-  // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
   printf("\n");
   int isBattleStart;
   printf("バトルをはじめる\n");
@@ -173,10 +169,6 @@ int main(void){
                 RitchieHp = 0;
               }
               displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
               displayRitchieDiningMessage();
               break;
             default:
@@ -198,10 +190,6 @@ int main(void){
                 RitchieHp = 0;
               }
               displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
               displayRitchieDiningMessage();
               break;
             default:
@@ -223,10 +211,6 @@ int main(void){
                 RitchieHp = 0;
               }
               displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
               displayRitchieDiningMessage();
               break;
             default:
@@ -248,10 +232,6 @@ int main(void){
                 RitchieHp = 0;
               }
               displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
               displayRitchieDiningMessage();
               break;
             default:
@@ -272,10 +252,6 @@ int main(void){
       printf("\n");
       printf("\n");
       displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-      // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-      // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-      // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-      // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
       printf("\n");
       printf("攻撃を選んでください。\n");
       printf("\n");
@@ -296,10 +272,6 @@ int main(void){
                 RitchieHp = 0;
               }
               displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
               displayRitchieDiningMessage();
               break;
             default:
@@ -321,10 +293,6 @@ int main(void){
                 RitchieHp = 0;
               }
               displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
               displayRitchieDiningMessage();
               break;
             default:
@@ -346,10 +314,6 @@ int main(void){
                 RitchieHp = 0;
               }
               displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
               displayRitchieDiningMessage();
               break;
             default:
@@ -371,10 +335,6 @@ int main(void){
                 RitchieHp = 0;
               }
               displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-              // printf("リッチーの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", RitchieHp, RitchieFullHp, RitchieAttackPoint);
-              // printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
-              // printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
               displayRitchieDiningMessage();
               break;
             default:
