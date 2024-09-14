@@ -67,9 +67,6 @@ int main(void){
   // -----------------------------------------------------
   String userName;  
   displayUserNameRequestMessage();
-  // insertLineBreak(1);
-  // printf("主人公の名前を\033[33m8文字以内\033[0mで入力してください。\n");
-  // insertLineBreak(1);
   scanf("%8s", userName); // 8文字で切っちゃう。
   if(strcmp(userName, "test") == 0) {
     displayErrorMessage("testユーザーが選択されました。");
