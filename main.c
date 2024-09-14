@@ -34,12 +34,7 @@ int main(void){
   // (2)ゲームをはじめますか？
   // -----------------------------------------------------
   displayStartGameOptionMessage();
-  // printf("このゲームをはじめますか?\n");
-  // insertLineBreak(1);
-  // printf("\033[33m0か1か7を入力してください。\033[0m\n");
-  // insertLineBreak(1);
-  // printf("(0:いいえ or 1:はい or 7:宝箱を開ける)\n");
-  // insertLineBreak(1);
+  
   int gameStartAnswer;
   String OpenTreasurePassword;
   scanf("%d", &gameStartAnswer);
