@@ -19,6 +19,7 @@ void displayBattleStatus(String userName, int userHp, int userFullHp, int userAt
 void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
+void decreaseHp(int *hp, int *damage);
 
 int stageNumber;
 
@@ -149,10 +150,11 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        RitchieHp -= userAttackPoint;
-        if (RitchieHp < 0) {
-          RitchieHp = 0;
-        }
+        decreaseHp(&RitchieHp, &userAttackPoint);
+        // RitchieHp -= userAttackPoint;
+        // if (RitchieHp < 0) {
+        //   RitchieHp = 0;
+        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -167,10 +169,11 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        RitchieHp -= userAttackPoint;
-        if (RitchieHp < 0) {
-          RitchieHp = 0;
-        }
+        decreaseHp(&RitchieHp, &userAttackPoint);
+        // RitchieHp -= userAttackPoint;
+        // if (RitchieHp < 0) {
+        //   RitchieHp = 0;
+        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -185,10 +188,11 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        RitchieHp -= userAttackPoint;
-        if (RitchieHp < 0) {
-          RitchieHp = 0;
-        }
+        decreaseHp(&RitchieHp, &userAttackPoint);
+        // RitchieHp -= userAttackPoint;
+        // if (RitchieHp < 0) {
+        //   RitchieHp = 0;
+        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -203,10 +207,11 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        RitchieHp -= userAttackPoint;
-        if (RitchieHp < 0) {
-          RitchieHp = 0;
-        }
+        decreaseHp(&RitchieHp, &userAttackPoint);
+        // RitchieHp -= userAttackPoint;
+        // if (RitchieHp < 0) {
+        //   RitchieHp = 0;
+        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -239,10 +244,11 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        RitchieHp -= userAttackPoint;
-        if (RitchieHp < 0) {
-          RitchieHp = 0;
-        }
+        decreaseHp(&RitchieHp, &userAttackPoint);
+        // RitchieHp -= userAttackPoint;
+        // if (RitchieHp < 0) {
+        //   RitchieHp = 0;
+        // }
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -256,10 +262,11 @@ int main(void){
         switch (userAttackType) {
           case 0:
             displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-            RitchieHp -= userAttackPoint;
-            if (RitchieHp < 0) {
-              RitchieHp = 0;
-            }
+            decreaseHp(&RitchieHp, &userAttackPoint);
+            // RitchieHp -= userAttackPoint;
+            // if (RitchieHp < 0) {
+            //   RitchieHp = 0;
+            // }
             displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
             displayRitchieDiningMessage();
             break;
@@ -273,10 +280,11 @@ int main(void){
         switch (userAttackType) {
           case 0:
             displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-            RitchieHp -= userAttackPoint;
-            if (RitchieHp < 0) {
-              RitchieHp = 0;
-            }
+            decreaseHp(&RitchieHp, &userAttackPoint);
+            // RitchieHp -= userAttackPoint;
+            // if (RitchieHp < 0) {
+            //   RitchieHp = 0;
+            // }
             displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
             displayRitchieDiningMessage();
             break;
@@ -290,10 +298,11 @@ int main(void){
         switch (userAttackType) {
           case 0:
             displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-            RitchieHp -= userAttackPoint;
-            if (RitchieHp < 0) {
-              RitchieHp = 0;
-            }
+            decreaseHp(&RitchieHp, &userAttackPoint);
+            // RitchieHp -= userAttackPoint;
+            // if (RitchieHp < 0) {
+            //   RitchieHp = 0;
+            // }
             displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
             displayRitchieDiningMessage();
             break;
@@ -486,4 +495,12 @@ void displayUserAttackLog(String userName, int userAttackPoint, String firstStag
   printf("--------------------------------------------\n");
   printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
   printf("%sは%dのダメージを受けた...!!!\n", firstStageEnemyName, userAttackPoint);
+}
+
+
+void decreaseHp(int *hp, int *damage) {
+  *hp -= *damage;
+  if (*hp < 0) {
+    *hp = 0;
+  }
 }
