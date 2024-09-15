@@ -13,6 +13,9 @@ void displayUserNameRequestMessage();
 void displayUserNameFeedBackMessage(String userName);
 void insertLineBreak(int lineCount);
 void displayRitchieDiningMessage();
+void displayRaymondDiningMessage();
+void displayGrahamDiningMessage();
+void displaySecretPasswordHint();
 void setUpUserJob(int userJob, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
 void exitAndDisplayErrorMessage(String errorMessage);
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int *enemyHp, int enemyFullHp, int enemyAttackPoint);
@@ -26,6 +29,7 @@ void decreaseHp(int *hp, int damage);
 void displayFirstAttackMessage(String userName);
 void displaySecondAttackMessage(String userName);
 void displayGameOverMessage(int stageNumber, String userName);
+void setUpSecretPassword(char **secretPassword);
 void userAttack(
   String userName,
   int userAttackPoint,
@@ -37,18 +41,21 @@ void userAttack(
   int enemyAttackPoint,
   int userAttackType,
   int userJob,
-  int stageNumber
+  int stageNumber,
+  String secretPassword
 );
 
 int stageNumber;
 int isBattleStart;
 int userAttackType;
+char *secretPassword = NULL;
 
 int main(void){
   // -----------------------------------------------------
   // ランダム生成のための準備
   // -----------------------------------------------------
   srand((unsigned)time(NULL));
+  setUpSecretPassword(&secretPassword);
 
   // -----------------------------------------------------
   // (1)タイトルとサブタイトルを表示する
@@ -61,11 +68,9 @@ int main(void){
 
   int gameStartAnswer;
   String OpenTreasurePassword;
-  String secretPassword = "web";
   scanf("%d", &gameStartAnswer);
   insertLineBreak(30);
   printf("--------------------------------------------\n");
-
   // -----------------------------------------------------
   // (3)ゲームをはじめるorはじめないor宝箱を開ける
   // -----------------------------------------------------
@@ -75,9 +80,9 @@ int main(void){
   case 1:
     break;
   case 7:
-    printf("宝箱を開けるためのパスワードを入力してください。\n");
+    printf("宝箱を開けるための8ケタのパスワードを入力してください。\n");
     scanf("%s", OpenTreasurePassword);
-    if(strcmp(OpenTreasurePassword, secretPassword) == 0) {
+    if(strcmp(OpenTreasurePassword, "01100011") == 0) {
       displayGameClearMessage();
     }else{
       exitAndDisplayErrorMessage("パスワードが違います。");
@@ -156,7 +161,7 @@ int main(void){
     displayFirstAttackMessage(userName);
     displayAttackOption(stageNumber);      
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber, secretPassword);
     break;
   // 後攻の場合-----------------------------------------------
   case 1:
@@ -167,7 +172,7 @@ int main(void){
     printf("攻撃を選んでください。\n");
     displayAttackOption(stageNumber);
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber, secretPassword);
     break;
   }
   // -----------------------------------------------------
@@ -212,7 +217,7 @@ int main(void){
     displayFirstAttackMessage(userName);
     displayAttackOption(stageNumber);      
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RaymondHp, RaymondFullHp, RaymondAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RaymondHp, RaymondFullHp, RaymondAttackPoint, userAttackType, userJob, stageNumber, secretPassword);
     break;
   // 後攻の場合-----------------------------------------------
   case 1:
@@ -227,7 +232,7 @@ int main(void){
     printf("攻撃を選んでください。\n");
     displayAttackOption(stageNumber);
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RaymondHp, RaymondFullHp, RaymondAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RaymondHp, RaymondFullHp, RaymondAttackPoint, userAttackType, userJob, stageNumber, secretPassword);
     break;
   }
 
@@ -243,9 +248,12 @@ int main(void){
   }
 
   String thirdStageEnemyName = "グレアム";
-  int GrahamHp = 400;
-  int GrahamFullHp = 400;
-  int GrahamAttackPoint = 200;
+  int GrahamHp = 140;
+  int GrahamFullHp = 140;
+  int GrahamAttackPoint = 100;
+  // int GrahamHp = 400;
+  // int GrahamFullHp = 400;
+  // int GrahamAttackPoint = 200;
   stageNumber = 3;
 
   // -----------------------------------------------------
@@ -281,7 +289,15 @@ int main(void){
     displayFirstAttackMessage(userName);
     displayAttackOption(stageNumber);      
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, thirdStageEnemyName, userHp, userFullHp, &GrahamHp, GrahamFullHp, GrahamAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, thirdStageEnemyName, userHp, userFullHp, &GrahamHp, GrahamFullHp, GrahamAttackPoint, userAttackType, userJob, stageNumber, secretPassword);
+    if(GrahamHp >= 0) {
+      displayEnemyAttackLog(thirdStageEnemyName, userName, GrahamAttackPoint, stageNumber);
+      userHp -= GrahamAttackPoint;
+      displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, thirdStageEnemyName, &GrahamHp, GrahamFullHp, GrahamAttackPoint);
+      if(userHp <= 0) {
+        displayGameOverMessage(stageNumber, userName);
+      }
+    }
     break;
   // 後攻の場合-----------------------------------------------
   case 1:
@@ -295,23 +311,69 @@ int main(void){
     printf("攻撃を選んでください。\n");
     displayAttackOption(stageNumber);
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, thirdStageEnemyName, userHp, userFullHp, &GrahamHp, GrahamFullHp, GrahamAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, thirdStageEnemyName, userHp, userFullHp, &GrahamHp, GrahamFullHp, GrahamAttackPoint, userAttackType, userJob, stageNumber, secretPassword);
     break;
   }
   // -----------------------------------------------------
-  // (11)クリア
+  // (10-3)どちらかが生きている場合
   // -----------------------------------------------------
-  printf("--------------------------------------------\n");
-  int isClear;
-  scanf("%d", &isClear);
-  if(!isClear){
-    exitAndDisplayErrorMessage("クリアしません");
+  if(GrahamHp <= 0) {
+    displayGrahamDiningMessage();
+    printf("\033[93m宝箱を開けるためのヒント\033[0mを知りたいですか?");
+    printf("(0:いいえ or 1:はい)\n");
+    int acceptSecretPassword;
+    scanf("%d", &acceptSecretPassword);
+    if(!acceptSecretPassword){
+      exitAndDisplayErrorMessage("SecretPasswordを受け取りませんでした。");
+    }
+    displaySecretPasswordHint();
+
+  }
+  if(userHp <= 0) {
+    displayGameOverMessage(stageNumber, userName);
+  }
+  
+  
+  switch (isUserThirdAttackForSecondStage) {
+  // 先攻の場合-----------------------------------------------
+  case 0:
+    printf("攻撃を選んでください。\n");
+    displayAttackOption(stageNumber);
+    scanf("%d", &userAttackType);
+    userAttack(userName, userAttackPoint, thirdStageEnemyName, userHp, userFullHp, &GrahamHp, GrahamFullHp, GrahamAttackPoint, userAttackType, userJob, stageNumber, secretPassword);
+    break;
+  // 後攻の場合-----------------------------------------------
+  case 1:
+    displayEnemyAttackLog(thirdStageEnemyName, userName, GrahamAttackPoint, stageNumber);
+    userHp -= GrahamAttackPoint;
+    displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, thirdStageEnemyName, &GrahamHp, GrahamFullHp, GrahamAttackPoint);
+    if(userHp <= 0) {
+      displayGameOverMessage(stageNumber, userName);
+    }
+    printf("攻撃を選んでください。\n");
+    displayAttackOption(stageNumber);
+    scanf("%d", &userAttackType);
+    userAttack(userName, userAttackPoint, thirdStageEnemyName, userHp, userFullHp, &GrahamHp, GrahamFullHp, GrahamAttackPoint, userAttackType, userJob, stageNumber, secretPassword);
+    break;
   }
 
 
+  // -----------------------------------------------------
+  // (11)クリア
+  // -----------------------------------------------------
+  displayGrahamDiningMessage();
 
+  printf("\033[93m宝箱を開けるためのパスワード\033[0mを受け取りますか?");
+  printf("(0:いいえ or 1:はい)\n");
+  int acceptSecretPassword;
+  scanf("%d", &acceptSecretPassword);
+  if(!acceptSecretPassword){
+    exitAndDisplayErrorMessage("SecretPasswordを受け取りませんでした。");
+  }
+  displaySecretPasswordHint();
 
-
+  // プログラムが終了する前にヒープ領域を解放
+  free(secretPassword);
 
   return 0;
 }
@@ -336,7 +398,11 @@ void displayTitle() {
   printf("\033[92m.##....##..##.....##.##.......##....##....##.............\033[0m\n");
   printf("\033[92m..#####.##..#######..########..######.....##.............\033[0m\n");
   printf("---------------------------------------------------------\n");
+  printf("\033[34m** SUBTITLE **\033[0m\n");
   printf("\033[34mHacker Quest is highly difficult,\nand your best chance of completing\nit is by improving your hacking skills.\033[0m\n");
+  printf("---------------------------------------------------------\n");
+  printf("\033[91m** THE GOAL OF THIS GAME **\033[0m\n");
+  printf("\033[91mThe goal of this game is\nto get the 8-digit password\nand open the treasure chest.\033[0m\n");
   printf("---------------------------------------------------------\n");
   printf("\n");
 };
@@ -352,13 +418,13 @@ void displayStartGameOptionMessage() {
 
 void displayJobs() {
   insertLineBreak(1);
-  printf("1:\033[91m勇者\033[0m\n");
+  printf("1:\033[91m勇者\033[0m(HP: 200, 攻撃力: 80)\n");
   printf("たまに一撃必殺を発動する。\n");
-  printf("2:\033[94m魔法使い\033[0m\n");
+  printf("2:\033[94m魔法使い\033[0m(HP: 200, 攻撃力: 80)\n");
   printf("たまに一撃必殺の魔法を唱える。\n");
-  printf("3:\033[96mニート\033[0m\n");
+  printf("3:\033[96mニート\033[0m(HP: 20, 攻撃力: 20)\n");
   printf("基本弱い。たまにとんでもなくやる気が出る。\n");
-  printf("4:\033[92mエンジニア\033[0m\n");
+  printf("4:\033[92mエンジニア\033[0m(HP: 40, 攻撃力: 40)\n");
   printf("勉強が好き、ハッキングのヒントを得たいと思っている。\n");
   insertLineBreak(1);
 };
@@ -404,6 +470,26 @@ void displayRaymondDiningMessage() {
   printf("\n");
   printf("\033[42m「Good programmers know what to write. Great ones know what to rewrite and reuse.」\033[0m\n"); 
   printf("\033[42m「良いプログラマーは何を書くべきかを知っている。偉大なプログラマーは、何を書き直し、再利用するべきかを知っている。」\033[0m\n"); 
+}
+void displayGrahamDiningMessage() {
+  printf("\033[45mグレアム\033[0mのHPは0になった...!!!\n");
+  printf("\033[45mグレアム\033[0mはメッセージと\033[93m宝箱を開けるためのヒント\033[0mを残して立ち去った...\n");
+  printf("\n");
+  printf("\033[42m「It's hard to do a really good job on anything you don't think about in the shower.」\033[0m\n"); 
+  printf("\033[42m「シャワーを浴びているときに考えないことでは、本当に良い仕事はできない。」\033[0m\n"); 
+  printf("\n");
+}
+
+void displaySecretPasswordHint() {
+  insertLineBreak(28);
+  printf("\033[36m宝箱を開けるためのパスワードを知るヒント\033[0m\n");
+  insertLineBreak(1);
+  printf("\033[36m下のコマンドを実行してhexファイルを生成してください。\033[0m\n");
+  printf("\033[93m xxd main.out > main.hex\033[36m\n");
+  printf("\033[36m次に、生成された\033[93mmain.hexファイル\033[36mを開いて、\033[0m\n");
+  printf("\033[36m『search』や『password』でgrepしてください。\033[0m\n");
+  printf("\033[36m何かいい手がかりが発見できるはずです。\033[0m\n");
+  exit(1);
 }
 
 void setUpUserJob(int userJob, String userName, int *userHp, int *userFullHp, int *userAttackPoint) {
@@ -453,6 +539,8 @@ void exitAndDisplayErrorMessage(String errorMessage) {
     printf("%s\n", errorMessage);
   }
   printf("ゲームを終了しました。\n");
+  // プログラムが終了する前にヒープ領域を解放
+  free(secretPassword);
   exit(1);
 }
 
@@ -564,10 +652,15 @@ void displayGameOverMessage(int stageNumber, String userName) {
   printf("\033[93m*                                           *\033[0m\n");
   printf("\033[93m*********************************************\033[0m\n");
   printf("\n");
-  printf("\033[36m(!)IMPORTANT\n");
+  printf("\033[36m(!)IMPORTANT\033[0m\n");
   printf("\n");
-  printf("\033[36mYou should either modify this binary file\nand change the User or Enemy parameters,\n");
-  printf("or find the secret password.\033[0m\n");
+  printf("\033[36mYou should either modify this binary file\nand change the User or Enemy parameters,\033[0m\n");
+  printf("\033[36mor find the secret password.\033[0m\n");
+  printf("\n");
+  printf("\033[36m(!)HINT \033[0m\n");
+  printf("\033[36mAfter running \033[93mxxd main.out > main.hex\033[36m,\n");
+  printf("\033[36mOpen the \033[93mmain.hex\033[36m file and use \033[93mgrep\033[36m to search for 'secret' or 'password'.\033[93m\n");
+  printf("\033[36mYou might find secret password ???.\033[0m\n");
   printf("\n");
   printf("\033[93m------- Hacker Quest\033[0m\n\n");
   exit(1);
@@ -584,7 +677,8 @@ void userAttack(
     int enemyAttackPoint,
     int userAttackType,
     int userJob,
-    int stageNumber
+    int stageNumber,
+    String secretPassword
   ) {
   // printf("%d\n", *enemyHp); // enemyHpが指す値
   // printf("%p\n", (void*)&enemyHp); // enemyHp変数のポインターのアドレス
@@ -605,7 +699,20 @@ void userAttack(
       break;
     }
     break;
+  // 強攻撃
+  case 1:
+    if(stageNumber != 3) {
+      exitAndDisplayErrorMessage("存在しない技が選択されました。");
+    }
+    userAttackPoint *= 2;
+    displayUserAttackLog(userName, userAttackPoint, enemyName);
+    decreaseHp(enemyHp, userAttackPoint);
+    displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, enemyName, enemyHp, enemyFullHp, enemyAttackPoint);
+    break;
   default:
     exitAndDisplayErrorMessage("存在しない技が選択されました。");
   }
+}
+void setUpSecretPassword(char **secretPassword) {
+  *secretPassword = strdup("secret_password_is_01100011");
 }
