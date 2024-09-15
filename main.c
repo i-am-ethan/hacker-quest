@@ -19,6 +19,7 @@ void displayBattleStatus(String userName, int userHp, int userFullHp, int userAt
 void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
+void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoint);
 void decreaseHp(int *hp, int damage);
 void displayFirstAttackMessage(String userName);
 void displaySecondAttackMessage(String userName);
@@ -148,7 +149,7 @@ int main(void){
   case 0:
     displayFirstAttackMessage(userName);
     switch (job) {
-    case 1:
+    case 1: // 勇者の場合
       displayAttackOption(stageNumber);      
       scanf("%d", &userAttackType);
       switch (userAttackType) {
@@ -159,7 +160,7 @@ int main(void){
         exitAndDisplayErrorMessage("存在しない技が選択されました。");
       }
       break;
-    case 2:
+    case 2: // 魔法使いの場合
       displayAttackOption(stageNumber);
       scanf("%d", &userAttackType);
       switch (userAttackType) {
@@ -170,7 +171,7 @@ int main(void){
         exitAndDisplayErrorMessage("存在しない技が選択されました。");
       }
       break;
-    case 3:
+    case 3: // ニートの場合
       displayAttackOption(stageNumber);
       scanf("%d", &userAttackType);
       switch (userAttackType) {
@@ -181,7 +182,7 @@ int main(void){
         exitAndDisplayErrorMessage("存在しない技が選択されました。");
       }
       break;
-    case 4:
+    case 4: // エンジニアの場合
       displayAttackOption(stageNumber);
       scanf("%d", &userAttackType);
       switch (userAttackType) {
@@ -199,8 +200,7 @@ int main(void){
   // 後攻の場合
   case 1:
     displaySecondAttackMessage(userName);
-    printf("リッチーは\033[91m攻撃\033[0mをしてきた...!!!\n");
-    printf("\033[35m%s\033[0mは\033[91m%d\033[0mのダメージを受けた...!!!\n", userName, RitchieAttackPoint);
+    displayEnemyAttackLog(firstStageEnemyName, userName, RitchieAttackPoint);
     userHp -= RitchieAttackPoint;
     displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
     printf("攻撃を選んでください。\n");
@@ -420,11 +420,11 @@ void displayBattleStatus(String userName, int userHp, int userFullHp, int userAt
 void displayAttackOption(int stageNumber) {
   switch (stageNumber) {
   case 1:
-    printf("0:攻撃, 1:未修得\n");
+    printf("0:攻撃, 1:未習得\n");
     printf("\033[33m0を入力してください。\033[0m\n");
     break;
   case 2:
-    printf("0:攻撃, 1:未修得\n");
+    printf("0:攻撃, 1:未習得\n");
     printf("\033[33m0を入力してください。\033[0m\n");
     break;
   case 3:
@@ -448,6 +448,11 @@ void displayUserAttackLog(String userName, int userAttackPoint, String firstStag
   printf("--------------------------------------------\n");
   printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
   printf("%sは%dのダメージを受けた...!!!\n", firstStageEnemyName, userAttackPoint);
+}
+
+void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoint){
+  printf("リッチーは\033[91m攻撃\033[0mをしてきた...!!!\n");
+  printf("\033[35m%s\033[0mは\033[91m%d\033[0mのダメージを受けた...!!!\n", userName, enemyAttackPoint);
 }
 
 
