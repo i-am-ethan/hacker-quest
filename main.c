@@ -153,29 +153,6 @@ int main(void){
     displayAttackOption(stageNumber);      
     scanf("%d", &userAttackType);
     userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
-
-    // switch (userJob) {
-    // case 1: // 勇者の場合
-    //   displayAttackOption(stageNumber);      
-    //   scanf("%d", &userAttackType);
-    //   userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
-    //   break;
-    // case 2: // 魔法使いの場合
-    //   displayAttackOption(stageNumber);
-    //   scanf("%d", &userAttackType);
-    //   userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
-    //   break;
-    // case 3: // ニートの場合
-    //   displayAttackOption(stageNumber);
-    //   scanf("%d", &userAttackType);
-    //   userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
-    //   break;
-    // case 4: // エンジニアの場合
-    //   displayAttackOption(stageNumber);
-    //   scanf("%d", &userAttackType);
-    //   userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
-    //   break;
-    // }
     break;
     // switch userJob 終わり ----------
 
@@ -190,26 +167,6 @@ int main(void){
     displayAttackOption(stageNumber);
     scanf("%d", &userAttackType);
     userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
-    // switch (userJob) {
-    // 職業の種類
-    // case 1:
-    //   break;
-    // case 2:
-    //   displayAttackOption(stageNumber);
-    //   scanf("%d", &userAttackType);
-    //   userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
-    //   break;
-    // case 3:
-    //   displayAttackOption(stageNumber);
-    //   scanf("%d", &userAttackType);
-    //   userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
-    //   break;
-    // case 4:
-    //   displayAttackOption(stageNumber);
-    //   scanf("%d", &userAttackType);
-    //   userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
-    //   break;
-    // }
     break;
   }
   // -----------------------------------------------------
