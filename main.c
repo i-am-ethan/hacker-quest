@@ -24,6 +24,7 @@ void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoi
 void decreaseHp(int *hp, int damage);
 void displayFirstAttackMessage(String userName);
 void displaySecondAttackMessage(String userName);
+void displayGameOverMessage(int stageNumber, String userName);
 void userAttack(
   String userName,
   int userAttackPoint,
@@ -216,6 +217,10 @@ int main(void){
     displayEnemyAttackLog(firstStageEnemyName, userName, RitchieAttackPoint);
     userHp -= RitchieAttackPoint;
     displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, secondStageEnemyName, &RaymondHp, RaymondFullHp, RaymondAttackPoint);
+    if(userHp <= 0) {
+      // ゲームオーバーになる。
+      displayGameOverMessage(stageNumber, userName);
+    }
     printf("攻撃を選んでください。\n");
     displayAttackOption(stageNumber);
     scanf("%d", &userAttackType);
@@ -450,7 +455,21 @@ void displayFirstAttackMessage(String userName) {
 void displaySecondAttackMessage(String userName) {
   printf("--------------------------------------------\n");
   printf("\033[35m%s\033[0mは後攻になった...!!!\n", userName);
-  insertLineBreak(2);
+  insertLineBreak(1);
+}
+
+void displayGameOverMessage(int stageNumber, String userName) {
+  printf("\033[35m%s\033[0mは静かにその場に倒れた...\n", userName);
+  printf("\n");
+  printf("===> 記録: Stage %d\n", stageNumber - 1);
+  printf("\n");
+  printf("\033[93m*********************************************\033[0m\n");
+  printf("\033[93m*                                           *\033[0m\n");
+  printf("\033[93m*                 GAME OVER                 *\033[0m\n");
+  printf("\033[93m*                                           *\033[0m\n");
+  printf("\033[93m*********************************************\033[0m\n");
+  printf("\033[93m------- Hacker Quest\033[0m\n\n");
+  exit(1);
 }
 
 void userAttack(
