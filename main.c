@@ -252,7 +252,7 @@ int main(void){
   // -----------------------------------------------------
   insertLineBreak(20);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-  printf("\033[96m%sはたたかいの経験値を経て新たな攻撃を覚えた...!!!\033[0m\n", userName);
+  printf("\033[35m%s\033[0m\033[96mはたたかいの経験値を経て新たな攻撃を覚えた...!!!\033[0m\n", userName);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
   
 
