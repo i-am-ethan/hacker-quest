@@ -242,9 +242,9 @@ int main(void){
   }
 
   String thirdStageEnemyName = "グレアム";
-  int GrahamHp = 12;
-  int GrahamFullHp = 12;
-  int GrahamAttackPoint = 12;
+  int GrahamHp = 400;
+  int GrahamFullHp = 400;
+  int GrahamAttackPoint = 200;
   stageNumber = 3;
 
   // -----------------------------------------------------
