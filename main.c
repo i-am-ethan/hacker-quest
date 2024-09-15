@@ -405,6 +405,9 @@ void exitAndDisplayErrorMessage(String errorMessage) {
 }
 
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int *enemyHp, int enemyFullHp, int enemyAttackPoint) {
+  if(userHp <= 0) {
+    userHp = 0;
+  }
   insertLineBreak(1);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
   printf("\033[45m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", enemyName, *enemyHp, enemyFullHp, enemyAttackPoint);
