@@ -339,15 +339,15 @@ void displayUserNameFeedBackMessage(String userName) {
 }
 
 void displayRitchieDiningMessage() {
-  printf("リッチーのHPは0になった...!!!\n");
-  printf("リッチーはメッセージを残して立ち去った...\n");
+  printf("\033[45mリッチー\033[0mのHPは0になった...!!!\n");
+  printf("\033[45mリッチー\033[0mはメッセージを残して立ち去った...\n");
   printf("\n");
   printf("\033[42m「The only way to learn a new programming language is by writing programs in it.」\033[0m\n"); 
   printf("\033[42m「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」\033[0m\n"); 
 }
 void displayRaymondDiningMessage() {
-  printf("レイモンドのHPは0になった...!!!\n");
-  printf("レイモンドはメッセージを残して立ち去った...\n");
+  printf("\033[45mレイモンド\033[0mのHPは0になった...!!!\n");
+  printf("\033[45mレイモンド\033[0mはメッセージを残して立ち去った...\n");
   printf("\n");
   printf("\033[42m「Good programmers know what to write. Great ones know what to rewrite and reuse.」\033[0m\n"); 
   printf("\033[42m「良いプログラマーは何を書くべきかを知っている。偉大なプログラマーは、何を書き直し、再利用するべきかを知っている。」\033[0m\n"); 
@@ -406,7 +406,7 @@ void exitAndDisplayErrorMessage(String errorMessage) {
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int *enemyHp, int enemyFullHp, int enemyAttackPoint) {
   insertLineBreak(1);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-  printf("%sの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", enemyName, *enemyHp, enemyFullHp, enemyAttackPoint);
+  printf("\033[45m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", enemyName, *enemyHp, enemyFullHp, enemyAttackPoint);
   printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
   insertLineBreak(1);
@@ -420,7 +420,7 @@ void displayAttackOption(int stageNumber) {
     printf("\033[33m0を入力してください。\033[0m\n");
     break;
   case 3:
-    printf("0:攻撃, 1:必殺技\n");
+    printf("0:攻撃, 1:強攻撃\n");
     printf("\033[33m0か1を入力してください。\033[0m\n");
     break;
   };
@@ -448,7 +448,7 @@ void displayUserAttackLog(String userName, int userAttackPoint, String firstStag
   insertLineBreak(24);
   printf("--------------------------------------------\n");
   printf("\033[35m%s\033[0mは攻撃をした...!!!\n", userName);
-  printf("%sは%dのダメージを受けた...!!!\n", firstStageEnemyName, userAttackPoint);
+  printf("\033[45m%s\033[0mは%dのダメージを受けた...!!!\n", firstStageEnemyName, userAttackPoint);
 }
 
 void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoint, int stageNumber){
