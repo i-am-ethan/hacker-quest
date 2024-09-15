@@ -211,7 +211,7 @@ int main(void){
     displayFirstAttackMessage(userName);
     displayAttackOption(stageNumber);      
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RaymondHp, RaymondFullHp, RaymondAttackPoint, userAttackType, userJob, stageNumber);
     break;
   // 後攻の場合-----------------------------------------------
   case 1:
@@ -226,7 +226,7 @@ int main(void){
     printf("攻撃を選んでください。\n");
     displayAttackOption(stageNumber);
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RaymondHp, RaymondFullHp, RaymondAttackPoint, userAttackType, userJob, stageNumber);
     break;
   }
 
