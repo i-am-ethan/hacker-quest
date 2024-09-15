@@ -66,6 +66,8 @@ int main(void){
   switch (gameStartAnswer) {
   case 0:
     exitAndDisplayErrorMessage("");
+  case 1:
+    break;
   case 7:
     printf("宝箱を開けるためのパスワードを入力してください。\n");
     scanf("%s", OpenTreasurePassword);
@@ -154,16 +156,13 @@ int main(void){
     scanf("%d", &userAttackType);
     userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
     break;
-    // switch userJob 終わり ----------
-
-  // 後攻の場合
+  // 後攻の場合-----------------------------------------------
   case 1:
     displaySecondAttackMessage(userName);
     displayEnemyAttackLog(firstStageEnemyName, userName, RitchieAttackPoint);
     userHp -= RitchieAttackPoint;
     displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
     printf("攻撃を選んでください。\n");
-    insertLineBreak(1);    
     displayAttackOption(stageNumber);
     scanf("%d", &userAttackType);
     userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
