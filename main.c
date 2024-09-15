@@ -143,10 +143,10 @@ int main(void){
   }
   insertLineBreak(20);
   // -----------------------------------------------------
-  // (8-1)先攻と後攻を決める処理
+  // (8-1)先攻と後攻を決める処理(0:先攻, 1:後攻)
   // -----------------------------------------------------
-  // int isUserFirstAttackForFirstStage = 0; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
-  int isUserFirstAttackForFirstStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  // int isUserFirstAttackForFirstStage = 1;
+  int isUserFirstAttackForFirstStage = rand() % 2;
   // -----------------------------------------------------
   // (8-2)バトルの処理
   // -----------------------------------------------------
@@ -199,9 +199,10 @@ int main(void){
   }
   insertLineBreak(20);
   // -----------------------------------------------------
-  // (9-1)先攻と後攻を決める処理
+  // (9-1)先攻と後攻を決める処理(0:先攻, 1:後攻)
   // -----------------------------------------------------
-  int isUserFirstAttackForSecondStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  // int isUserFirstAttackForSecondStage = 1;
+  int isUserFirstAttackForSecondStage = rand() % 2;
   // -----------------------------------------------------
   // (9-2)バトルの処理
   // -----------------------------------------------------
@@ -267,10 +268,10 @@ int main(void){
   }
   insertLineBreak(20);
   // -----------------------------------------------------
-  // (10-1)先攻と後攻を決める処理
+  // (10-1)先攻と後攻を決める処理(0:先攻, 1:後攻)
   // -----------------------------------------------------
-  int isUserThirdAttackForSecondStage = 1; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
-  // int isUserThirdAttackForSecondStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  // int isUserThirdAttackForSecondStage = 1;
+  int isUserThirdAttackForSecondStage = rand() % 2;
   // -----------------------------------------------------
   // (10-2)バトルの処理
   // -----------------------------------------------------
@@ -289,7 +290,6 @@ int main(void){
     userHp -= GrahamAttackPoint;
     displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, thirdStageEnemyName, &GrahamHp, GrahamFullHp, GrahamAttackPoint);
     if(userHp <= 0) {
-      // ゲームオーバーになる。
       displayGameOverMessage(stageNumber, userName);
     }
     printf("攻撃を選んでください。\n");
