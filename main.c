@@ -13,7 +13,7 @@ void displayUserNameRequestMessage();
 void displayUserNameFeedBackMessage(String userName);
 void insertLineBreak(int lineCount);
 void displayRitchieDiningMessage();
-void setUpUserJob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
+void setUpUserJob(int userJob, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
 void exitAndDisplayErrorMessage(String errorMessage);
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int *enemyHp, int enemyFullHp, int enemyAttackPoint);
 void displayAttackOption(int stageNumber);
@@ -88,15 +88,15 @@ int main(void){
   // -----------------------------------------------------
   // (5)職業を選んでください。
   // -----------------------------------------------------
-  int job;
+  int userJob;
   int userHp;
   int userFullHp;
   int userAttackPoint;
   insertLineBreak(1);
   printf("\033[35m%s\033[0mの職業を\033[33m1~4の中から\033[0m選択してください。\n", userName);
   displayJobs();
-  scanf("%d", &job); // 職業選択
-  setUpUserJob(job, userName, &userHp, &userFullHp, &userAttackPoint);
+  scanf("%d", &userJob); // 職業選択
+  setUpUserJob(userJob, userName, &userHp, &userFullHp, &userAttackPoint);
 
   // -----------------------------------------------------
   // (6)クエストに挑戦する準備はできましたか？
@@ -149,7 +149,7 @@ int main(void){
   // 先攻の場合-----------------------------------------------
   case 0:
     displayFirstAttackMessage(userName);
-    switch (job) {
+    switch (userJob) {
     case 1: // 勇者の場合
       displayAttackOption(stageNumber);      
       scanf("%d", &userAttackType);
@@ -172,7 +172,7 @@ int main(void){
       break;
     }
     break;
-    // switch job 終わり ----------
+    // switch userJob 終わり ----------
 
   // 後攻の場合
   case 1:
@@ -182,7 +182,7 @@ int main(void){
     displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
     printf("攻撃を選んでください。\n");
     insertLineBreak(1);
-    switch (job) {
+    switch (userJob) {
     // 職業の種類
     case 1:
       displayAttackOption(stageNumber);
@@ -308,9 +308,9 @@ void displayRitchieDiningMessage() {
   printf("\033[42m「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」\033[0m\n"); 
 }
 
-void setUpUserJob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint) {
+void setUpUserJob(int userJob, String userName, int *userHp, int *userFullHp, int *userAttackPoint) {
   insertLineBreak(30);
-  switch (job) {
+  switch (userJob) {
   case 1:
     printf("\033[35m%s\033[0mは\033[91m勇者\033[0mを選んだ。\n", userName);
     printf("不思議な力によりHPと攻撃力が付与された。\n");
