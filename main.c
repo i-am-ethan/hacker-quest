@@ -141,12 +141,12 @@ int main(void){
   // (8-1)先攻と後攻を決める処理
   // -----------------------------------------------------
   int userAttackType;
-  // int isUserFirstAttachForFirstStage = 0; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
-  int isUserFirstAttachForFirstStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  // int isUserFirstAttackForFirstStage = 0; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  int isUserFirstAttackForFirstStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
   // -----------------------------------------------------
   // (8-2)バトルの処理
   // -----------------------------------------------------
-  switch (isUserFirstAttachForFirstStage) {
+  switch (isUserFirstAttackForFirstStage) {
   // 先攻の場合-----------------------------------------------
   case 0:
     displayFirstAttackMessage(userName);
