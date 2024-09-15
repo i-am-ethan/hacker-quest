@@ -255,6 +255,58 @@ int main(void){
   printf("\033[35m%s\033[0m\033[96mはたたかいの経験値を経て新たな攻撃を覚えた...!!!\033[0m\n", userName);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
   
+  displayThirdStageOpeningMessage();
+  displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, thirdStageEnemyName, &GrahamHp, GrahamFullHp, GrahamAttackPoint);
+
+  printf("--------------------------------------------\n");
+  printf("ステージ3/3(グレアムとたたかう)\n");
+  printf("(0:いいえ or 1:はい)\n");
+  scanf("%d", &isBattleStart);
+  if(!isBattleStart){
+    exitAndDisplayErrorMessage("バトルに挑戦する準備ができていないようです。");
+  }
+  insertLineBreak(20);
+  // -----------------------------------------------------
+  // (10-1)先攻と後攻を決める処理
+  // -----------------------------------------------------
+  int isUserThirdAttackForSecondStage = 1; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  // int isUserThirdAttackForSecondStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  // -----------------------------------------------------
+  // (10-2)バトルの処理
+  // -----------------------------------------------------
+  switch (isUserThirdAttackForSecondStage) {
+  // 先攻の場合-----------------------------------------------
+  case 0:
+    displayFirstAttackMessage(userName);
+    displayAttackOption(stageNumber);      
+    scanf("%d", &userAttackType);
+    userAttack(userName, userAttackPoint, thirdStageEnemyName, userHp, userFullHp, &GrahamHp, GrahamFullHp, GrahamAttackPoint, userAttackType, userJob, stageNumber);
+    break;
+  // 後攻の場合-----------------------------------------------
+  case 1:
+    displaySecondAttackMessage(userName);
+    displayEnemyAttackLog(thirdStageEnemyName, userName, GrahamAttackPoint, stageNumber);
+    userHp -= GrahamAttackPoint;
+    displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, thirdStageEnemyName, &GrahamHp, GrahamFullHp, GrahamAttackPoint);
+    if(userHp <= 0) {
+      // ゲームオーバーになる。
+      displayGameOverMessage(stageNumber, userName);
+    }
+    printf("攻撃を選んでください。\n");
+    displayAttackOption(stageNumber);
+    scanf("%d", &userAttackType);
+    userAttack(userName, userAttackPoint, thirdStageEnemyName, userHp, userFullHp, &GrahamHp, GrahamFullHp, GrahamAttackPoint, userAttackType, userJob, stageNumber);
+    break;
+  }
+  // -----------------------------------------------------
+  // (11)クリア
+  // -----------------------------------------------------
+  printf("--------------------------------------------\n");
+  int isClear;
+  scanf("%d", &isClear);
+  if(!isClear){
+    exitAndDisplayErrorMessage("クリアしません");
+  }
 
 
 
