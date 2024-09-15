@@ -31,7 +31,7 @@ How To Become A Hackerの著者。
 「良いプログラマーは何を書くべきかを知っている。偉大なプログラマーは、何を書き直し、再利用するべきかを知っている。」
 ```
 3. ポールグレアム
-Lispプログラミング言語のスペシャリスト。初期のウェブアプリケーション「Viaweb」の創業者。さらに、彼はスタートアップの支援を行うインキュベーター「Y Combinator」の共同創設者であり、技術的な革新とビジネスの融合に大きな影響を与えました。
+Lisper。ハッカーと画家の著者。YahooStoreの開発者。IPhoneの出現を予測していた者。DropBox、Airbnb、Stripeなど名だたる企業への投資家。
 必殺技は、1日16時間働け！
 ```
 「It's hard to do a really good job on anything you don't think about in the shower.」
