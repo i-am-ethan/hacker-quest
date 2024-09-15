@@ -488,6 +488,8 @@ void displaySecondAttackMessage(String userName) {
 }
 
 void displayGameOverMessage(int stageNumber, String userName) {
+  printf("\033[35m%s\033[0mのHPは0になった...\n", userName);
+  printf("\n");
   printf("\033[35m%s\033[0mは静かにその場に倒れた...\n", userName);
   printf("\n");
   printf("===> 記録: Stage %d\n", stageNumber - 1);
@@ -497,6 +499,12 @@ void displayGameOverMessage(int stageNumber, String userName) {
   printf("\033[93m*                 GAME OVER                 *\033[0m\n");
   printf("\033[93m*                                           *\033[0m\n");
   printf("\033[93m*********************************************\033[0m\n");
+  printf("\n");
+  printf("\033[36m(!)IMPORTANT\n");
+  printf("\n");
+  printf("\033[36mYou should either modify this binary file\nand change the User or Enemy parameters,\n");
+  printf("or find the secret password.\033[0m\n");
+  printf("\n");
   printf("\033[93m------- Hacker Quest\033[0m\n\n");
   exit(1);
 }
