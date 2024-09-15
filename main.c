@@ -15,13 +15,23 @@ void insertLineBreak(int lineCount);
 void displayRitchieDiningMessage();
 void setUpUserJob(int job, String userName, int *userHp, int *userFullHp, int *userAttackPoint);
 void exitAndDisplayErrorMessage(String errorMessage);
-void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int enemyHp, int enemyFullHp, int enemyAttackPoint);
+void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int *enemyHp, int enemyFullHp, int enemyAttackPoint);
 void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
 void decreaseHp(int *hp, int damage);
 void displayFirstAttackMessage(String userName);
 void displaySecondAttackMessage(String userName);
+void userAttack(
+  String userName,
+  int userAttackPoint,
+  String firstStageEnemyName,
+  int userHp,
+  int userFullHp,
+  int *enemyHp,
+  int enemyFullHp,
+  int enemyAttackPoint
+);
 
 int stageNumber;
 
@@ -115,7 +125,7 @@ int main(void){
   stageNumber = 1;
   
   displayFirstStageOpeningMessage();
-  displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+  displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
   int isBattleStart;
   printf("ステージ1をはじめる\n");
   printf("(0:いいえ or 1:はい)\n");
@@ -128,7 +138,8 @@ int main(void){
   // (8-1)先攻と後攻を決める処理
   // -----------------------------------------------------
   int userAttackType;
-  int isUserFirstAttachForFirstStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  int isUserFirstAttachForFirstStage = 0; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  // int isUserFirstAttachForFirstStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
   // -----------------------------------------------------
   // (8-2)バトルの処理
   // -----------------------------------------------------
@@ -142,10 +153,22 @@ int main(void){
       scanf("%d", &userAttackType);
       switch (userAttackType) {
       case 0:
-        displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        decreaseHp(&RitchieHp, userAttackPoint);
-        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
-        displayRitchieDiningMessage();
+        printf("RitchieHpのポインター\n");
+        printf("%p\n", &RitchieHp);
+        userAttack(
+          userName,
+          userAttackPoint,
+          firstStageEnemyName,
+          userHp,
+          userFullHp,
+          &RitchieHp, // ポインタとして渡す
+          RitchieFullHp,
+          RitchieAttackPoint
+        );
+        // displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
+        // decreaseHp(&RitchieHp, userAttackPoint);
+        // displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        // displayRitchieDiningMessage();
         break;
       default:
         exitAndDisplayErrorMessage("存在しない技が選択されました。");
@@ -158,7 +181,7 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, userAttackPoint);
-        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
       default:
@@ -172,7 +195,7 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, userAttackPoint);
-        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
       default:
@@ -186,7 +209,7 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, userAttackPoint);
-        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
       default:
@@ -203,7 +226,7 @@ int main(void){
     printf("リッチーは\033[91m攻撃\033[0mをしてきた...!!!\n");
     printf("\033[35m%s\033[0mは\033[91m%d\033[0mのダメージを受けた...!!!\n", userName, RitchieAttackPoint);
     userHp -= RitchieAttackPoint;
-    displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+    displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
     printf("攻撃を選んでください。\n");
     insertLineBreak(1);
     switch (job) {
@@ -215,7 +238,7 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, userAttackPoint);
-        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
       default:
@@ -229,7 +252,7 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, userAttackPoint);
-        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
       default:
@@ -243,7 +266,7 @@ int main(void){
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
         decreaseHp(&RitchieHp, userAttackPoint);
-        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+        displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
       default:
@@ -257,7 +280,7 @@ int main(void){
         case 0:
           displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
           decreaseHp(&RitchieHp, userAttackPoint);
-          displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
+          displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
           displayRitchieDiningMessage();
           break;
         default:
@@ -421,10 +444,10 @@ void exitAndDisplayErrorMessage(String errorMessage) {
   exit(1);
 }
 
-void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int enemyHp, int enemyFullHp, int enemyAttackPoint) {
+void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int *enemyHp, int enemyFullHp, int enemyAttackPoint) {
   insertLineBreak(1);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-  printf("%sの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", enemyName, enemyHp, enemyFullHp, enemyAttackPoint);
+  printf("%sの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", enemyName, *enemyHp, enemyFullHp, enemyAttackPoint);
   printf("\033[35m%s\033[0mの\033[44mHP: %d/%d\033[0m, \033[41m攻撃力: %d\033[0m\n", userName, userHp, userFullHp, userAttackPoint);
   printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
   insertLineBreak(1);
@@ -482,4 +505,23 @@ void displaySecondAttackMessage(String userName) {
   printf("--------------------------------------------\n");
   printf("\033[35m%s\033[0mは後攻になった...!!!\n", userName);
   insertLineBreak(2);
+}
+
+void userAttack(
+    String userName,
+    int userAttackPoint,
+    String firstStageEnemyName,
+    int userHp,
+    int userFullHp,
+    int *enemyHp,
+    int enemyFullHp,
+    int enemyAttackPoint
+  ) {
+  // printf("%d\n", *enemyHp); // enemyHpが指す値
+  // printf("%p\n", (void*)&enemyHp); // enemyHp変数のポインターのアドレス
+  // printf("%p\n", (void*)enemyHp); // enemyHpの値のポインター
+  displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
+  decreaseHp(enemyHp, userAttackPoint);
+  displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, enemyHp, enemyFullHp, enemyAttackPoint);
+  displayRitchieDiningMessage();
 }
