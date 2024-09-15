@@ -28,7 +28,7 @@ void displayGameOverMessage(int stageNumber, String userName);
 void userAttack(
   String userName,
   int userAttackPoint,
-  String firstStageEnemyName,
+  String enemyName,
   int userHp,
   int userFullHp,
   int *enemyHp,
@@ -209,7 +209,7 @@ int main(void){
     displayFirstAttackMessage(userName);
     displayAttackOption(stageNumber);      
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
     break;
   // 後攻の場合-----------------------------------------------
   case 1:
@@ -224,7 +224,7 @@ int main(void){
     printf("攻撃を選んでください。\n");
     displayAttackOption(stageNumber);
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
+    userAttack(userName, userAttackPoint, secondStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
     break;
   }
 
@@ -448,7 +448,7 @@ void decreaseHp(int *hp, int damage) {
 void displayFirstAttackMessage(String userName) {
   printf("--------------------------------------------\n");
   printf("\033[35m%s\033[0mが先攻になった...!!!\n", userName);
-  insertLineBreak(2);
+  insertLineBreak(1);
   printf("攻撃を選んでください。\n");
   insertLineBreak(1);
 }
@@ -475,7 +475,7 @@ void displayGameOverMessage(int stageNumber, String userName) {
 void userAttack(
     String userName,
     int userAttackPoint,
-    String firstStageEnemyName,
+    String enemyName,
     int userHp,
     int userFullHp,
     int *enemyHp,
@@ -492,9 +492,9 @@ void userAttack(
   printf("ユーザーの職業:%d\n", userJob);
   switch (userAttackType) {
   case 0:
-    displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
+    displayUserAttackLog(userName, userAttackPoint, enemyName);
     decreaseHp(enemyHp, userAttackPoint);
-    displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, enemyHp, enemyFullHp, enemyAttackPoint);
+    displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, enemyName, enemyHp, enemyFullHp, enemyAttackPoint);
     switch (stageNumber) {
     case 1:
       displayRitchieDiningMessage();
