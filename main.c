@@ -20,7 +20,7 @@ void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
 void displaySecondStageOpeningMessage();
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
-void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoint);
+void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoint, int stageNumber);
 void decreaseHp(int *hp, int damage);
 void displayFirstAttackMessage(String userName);
 void displaySecondAttackMessage(String userName);
@@ -160,7 +160,7 @@ int main(void){
   // 後攻の場合-----------------------------------------------
   case 1:
     displaySecondAttackMessage(userName);
-    displayEnemyAttackLog(firstStageEnemyName, userName, RitchieAttackPoint);
+    displayEnemyAttackLog(firstStageEnemyName, userName, RitchieAttackPoint, stageNumber);
     userHp -= RitchieAttackPoint;
     displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
     printf("攻撃を選んでください。\n");
@@ -215,8 +215,8 @@ int main(void){
   // 後攻の場合-----------------------------------------------
   case 1:
     displaySecondAttackMessage(userName);
-    displayEnemyAttackLog(firstStageEnemyName, userName, RitchieAttackPoint);
-    userHp -= RitchieAttackPoint;
+    displayEnemyAttackLog(secondStageEnemyName, userName, RaymondAttackPoint, stageNumber);
+    userHp -= RaymondAttackPoint;
     displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, secondStageEnemyName, &RaymondHp, RaymondFullHp, RaymondAttackPoint);
     if(userHp <= 0) {
       // ゲームオーバーになる。
@@ -451,8 +451,18 @@ void displayUserAttackLog(String userName, int userAttackPoint, String firstStag
   printf("%sは%dのダメージを受けた...!!!\n", firstStageEnemyName, userAttackPoint);
 }
 
-void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoint){
-  printf("リッチーは\033[91m攻撃\033[0mをしてきた...!!!\n");
+void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoint, int stageNumber){
+  switch (stageNumber) {
+  case 1:
+    printf("\033[45m%s\033[0mの\033[91m攻撃(セグメンテーション違反アタック...!!!)\033[0m\n", enemyName);
+    break;
+  case 2:
+    printf("\033[45m%s\033[0mの\033[91m攻撃(クラッカーは豚箱に入れ...!!!)\033[0m\n", enemyName);
+    break;
+  case 3:
+    printf("\033[45m%s\033[0mの\033[91m攻撃(1日16時間働け...!!!!!!!!)\033[0m\n", enemyName);
+    break;
+  }
   printf("\033[35m%s\033[0mは\033[91m%d\033[0mのダメージを受けた...!!!\n", userName, enemyAttackPoint);
 }
 
