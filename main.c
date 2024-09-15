@@ -134,7 +134,7 @@ int main(void){
   
   displayFirstStageOpeningMessage();
   displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
-  printf("ステージ1をはじめる\n");
+  printf("ステージ1/3(リッチーとたたかう)\n");
   printf("(0:いいえ or 1:はい)\n");
   scanf("%d", &isBattleStart);
   if(!isBattleStart){
@@ -173,7 +173,7 @@ int main(void){
   // (9)野生のレイモンドが現れた:Eric S. Raymond: HP:10 攻撃力:10
   // -----------------------------------------------------
   printf("--------------------------------------------\n");
-  printf("ステージ2をはじめる\n");
+  printf("ステージ2/3をはじめる\n");
   printf("(0:いいえ or 1:はい)\n");
   scanf("%d", &isBattleStart);
   if(!isBattleStart){
@@ -189,7 +189,8 @@ int main(void){
   displaySecondStageOpeningMessage();
   displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, secondStageEnemyName, &RaymondHp, RaymondFullHp, RaymondAttackPoint);
 
-  printf("ステージ1をはじめる\n");
+  printf("--------------------------------------------\n");
+  printf("ステージ2/3(レイモンドとたたかう)\n");
   printf("(0:いいえ or 1:はい)\n");
   scanf("%d", &isBattleStart);
   if(!isBattleStart){
@@ -232,7 +233,7 @@ int main(void){
   // (10)野生のグレアムが現れた:Paul Graham: HP:400 攻撃力:200
   // -----------------------------------------------------
   printf("--------------------------------------------\n");
-  printf("ステージ3をはじめる\n");
+  printf("ステージ3/3をはじめる\n");
   printf("(0:いいえ or 1:はい)\n");
   scanf("%d", &isBattleStart);
   if(!isBattleStart){
@@ -281,7 +282,7 @@ void displayStartGameOptionMessage() {
 void displayJobs() {
   insertLineBreak(1);
   printf("1:\033[91m勇者\033[0m\n");
-  printf("たまに一撃必殺の攻撃力を得る。\n");
+  printf("たまに一撃必殺を発動する。\n");
   printf("2:\033[94m魔法使い\033[0m\n");
   printf("たまに一撃必殺の魔法を唱える。\n");
   printf("3:\033[96mニート\033[0m\n");
