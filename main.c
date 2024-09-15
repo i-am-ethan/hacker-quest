@@ -18,6 +18,7 @@ void exitAndDisplayErrorMessage(String errorMessage);
 void displayBattleStatus(String userName, int userHp, int userFullHp, int userAttackPoint, String enemyName, int *enemyHp, int enemyFullHp, int enemyAttackPoint);
 void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
+void displaySecondStageOpeningMessage();
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
 void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoint);
 void decreaseHp(int *hp, int damage);
@@ -33,10 +34,13 @@ void userAttack(
   int enemyFullHp,
   int enemyAttackPoint,
   int userAttackType,
-  int userJob
+  int userJob,
+  int stageNumber
 );
 
 int stageNumber;
+int isBattleStart;
+int userAttackType;
 
 int main(void){
   // -----------------------------------------------------
@@ -129,7 +133,6 @@ int main(void){
   
   displayFirstStageOpeningMessage();
   displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, &RitchieHp, RitchieFullHp, RitchieAttackPoint);
-  int isBattleStart;
   printf("ステージ1をはじめる\n");
   printf("(0:いいえ or 1:はい)\n");
   scanf("%d", &isBattleStart);
@@ -140,7 +143,6 @@ int main(void){
   // -----------------------------------------------------
   // (8-1)先攻と後攻を決める処理
   // -----------------------------------------------------
-  int userAttackType;
   // int isUserFirstAttackForFirstStage = 0; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
   int isUserFirstAttackForFirstStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
   // -----------------------------------------------------
@@ -152,7 +154,7 @@ int main(void){
     displayFirstAttackMessage(userName);
     displayAttackOption(stageNumber);      
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
+    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
     break;
   // 後攻の場合-----------------------------------------------
   case 1:
@@ -163,7 +165,7 @@ int main(void){
     printf("攻撃を選んでください。\n");
     displayAttackOption(stageNumber);
     scanf("%d", &userAttackType);
-    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob);
+    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
     break;
   }
   // -----------------------------------------------------
@@ -177,9 +179,61 @@ int main(void){
     exitAndDisplayErrorMessage("バトルに挑戦する準備ができていないようです。");
   }
 
+  String secondStageEnemyName = "レイモンド";
+  int RaymondHp = 12;
+  int RaymondFullHp = 12;
+  int RaymondAttackPoint = 12;
+  stageNumber = 2;
+
+  displaySecondStageOpeningMessage();
+  displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, secondStageEnemyName, &RaymondHp, RaymondFullHp, RaymondAttackPoint);
+
+  printf("ステージ1をはじめる\n");
+  printf("(0:いいえ or 1:はい)\n");
+  scanf("%d", &isBattleStart);
+  if(!isBattleStart){
+    exitAndDisplayErrorMessage("バトルに挑戦する準備ができていないようです。");
+  }
+  insertLineBreak(20);
+  // -----------------------------------------------------
+  // (9-1)先攻と後攻を決める処理
+  // -----------------------------------------------------
+  int isUserFirstAttackForSecondStage = rand() % 2; // ユーザーが先攻か後攻かをランダム関数で決める(0か1)
+  // -----------------------------------------------------
+  // (9-2)バトルの処理
+  // -----------------------------------------------------
+  switch (isUserFirstAttackForSecondStage) {
+  // 先攻の場合-----------------------------------------------
+  case 0:
+    displayFirstAttackMessage(userName);
+    displayAttackOption(stageNumber);      
+    scanf("%d", &userAttackType);
+    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
+    break;
+  // 後攻の場合-----------------------------------------------
+  case 1:
+    displaySecondAttackMessage(userName);
+    displayEnemyAttackLog(firstStageEnemyName, userName, RitchieAttackPoint);
+    userHp -= RitchieAttackPoint;
+    displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, secondStageEnemyName, &RaymondHp, RaymondFullHp, RaymondAttackPoint);
+    printf("攻撃を選んでください。\n");
+    displayAttackOption(stageNumber);
+    scanf("%d", &userAttackType);
+    userAttack(userName, userAttackPoint, firstStageEnemyName, userHp, userFullHp, &RitchieHp, RitchieFullHp, RitchieAttackPoint, userAttackType, userJob, stageNumber);
+    break;
+  }
+
   // -----------------------------------------------------
   // (10)野生のグレアムが現れた:Paul Graham: HP:400 攻撃力:200
   // -----------------------------------------------------
+  printf("--------------------------------------------\n");
+  printf("ステージ3をはじめる\n");
+  printf("(0:いいえ or 1:はい)\n");
+  scanf("%d", &isBattleStart);
+  if(!isBattleStart){
+    exitAndDisplayErrorMessage("バトルに挑戦する準備ができていないようです。");
+  }
+
 
 
   return 0;
@@ -266,6 +320,13 @@ void displayRitchieDiningMessage() {
   printf("\033[42m「The only way to learn a new programming language is by writing programs in it.」\033[0m\n"); 
   printf("\033[42m「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」\033[0m\n"); 
 }
+void displayRaymondDiningMessage() {
+  printf("レイモンドのHPは0になった...!!!\n");
+  printf("レイモンドはメッセージを残して立ち去った...\n");
+  printf("\n");
+  printf("\033[42m「Good programmers know what to write. Great ones know what to rewrite and reuse.」\033[0m\n"); 
+  printf("\033[42m「良いプログラマーは何を書くべきかを知っている。偉大なプログラマーは、何を書き直し、再利用するべきかを知っている。」\033[0m\n"); 
+}
 
 void setUpUserJob(int userJob, String userName, int *userHp, int *userFullHp, int *userAttackPoint) {
   insertLineBreak(30);
@@ -349,6 +410,15 @@ void displayFirstStageOpeningMessage() {
   printf("C言語の開発者であり、Unixオペレーティングシステムの共同開発者。\n");
 }
 
+void displaySecondStageOpeningMessage() {
+  insertLineBreak(24);
+  printf("--------------------------------------------\n");
+  printf("\033[45m野生のレイモンドが現れた...!!!\033[0m\n");
+  insertLineBreak(1);
+  printf("エリック・レイモンド:\n");
+  printf("How To Become A Hackerの著者。\nオープンソース運動を通じて、プログラミングやハッカー文化に深く影響を与えた人物。\n");
+}
+
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName) {
   insertLineBreak(24);
   printf("--------------------------------------------\n");
@@ -392,7 +462,8 @@ void userAttack(
     int enemyFullHp,
     int enemyAttackPoint,
     int userAttackType,
-    int userJob
+    int userJob,
+    int stageNumber
   ) {
   // printf("%d\n", *enemyHp); // enemyHpが指す値
   // printf("%p\n", (void*)&enemyHp); // enemyHp変数のポインターのアドレス
@@ -404,7 +475,14 @@ void userAttack(
     displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
     decreaseHp(enemyHp, userAttackPoint);
     displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, enemyHp, enemyFullHp, enemyAttackPoint);
-    displayRitchieDiningMessage();
+    switch (stageNumber) {
+    case 1:
+      displayRitchieDiningMessage();
+      break;
+    case 2:
+      displayRaymondDiningMessage();
+      break;
+    }
     break;
   default:
     exitAndDisplayErrorMessage("存在しない技が選択されました。");
