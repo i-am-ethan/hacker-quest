@@ -19,6 +19,7 @@ void displayBattleStatus(String userName, int userHp, int userFullHp, int userAt
 void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
 void displaySecondStageOpeningMessage();
+void displayThirdStageOpeningMessage();
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
 void displayEnemyAttackLog(String enemyName, String userName, int enemyAttackPoint, int stageNumber);
 void decreaseHp(int *hp, int damage);
@@ -442,6 +443,14 @@ void displaySecondStageOpeningMessage() {
   insertLineBreak(1);
   printf("エリック・レイモンド:\n");
   printf("How To Become A Hackerの著者。\nオープンソース運動を通じて、プログラミングやハッカー文化に深く影響を与えた人物。\n");
+}
+
+void displayThirdStageOpeningMessage() {
+  printf("--------------------------------------------\n");
+  printf("\033[45m野生のグレアムが現れた...!!!\033[0m\n");
+  insertLineBreak(1);
+  printf("ポール・グレアム:\n");
+  printf("Lisper。ハッカーと画家の著者。YahooStoreの開発者。iPhoneの出現を予測していた者。DropBox、Airbnb、Stripeなど名だたる企業への投資家。\n");
 }
 
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName) {
