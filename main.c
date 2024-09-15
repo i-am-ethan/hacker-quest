@@ -114,8 +114,6 @@ int main(void){
   if (!questStartAnswer) {
     exitAndDisplayErrorMessage("クエストに挑戦する準備ができていないようです。");
   }
-  printf("--------------------------------------------\n");
-  insertLineBreak(24);
   // -----------------------------------------------------
   // (7)バトル開始〜〜〜〜〜
   // -----------------------------------------------------
@@ -343,12 +341,12 @@ void displayAttackOption(int stageNumber) {
 };
 
 void displayFirstStageOpeningMessage() {
+  insertLineBreak(24);
   printf("--------------------------------------------\n");
   printf("\033[45m野生のリッチーが現れた...!!!\033[0m\n");
   insertLineBreak(1);
   printf("デニス・リッチー:\n");
   printf("C言語の開発者であり、Unixオペレーティングシステムの共同開発者。\n");
-  insertLineBreak(1);
 }
 
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName) {
