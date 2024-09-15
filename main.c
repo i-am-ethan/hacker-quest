@@ -19,7 +19,7 @@ void displayBattleStatus(String userName, int userHp, int userFullHp, int userAt
 void displayAttackOption(int stageNumber);
 void displayFirstStageOpeningMessage();
 void displayUserAttackLog(String userName, int userAttackPoint, String firstStageEnemyName);
-void decreaseHp(int *hp, int *damage);
+void decreaseHp(int *hp, int damage);
 void displayFirstAttackMessage(String userName);
 void displaySecondAttackMessage(String userName);
 
@@ -143,7 +143,7 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        decreaseHp(&RitchieHp, &userAttackPoint);
+        decreaseHp(&RitchieHp, userAttackPoint);
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -157,7 +157,7 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        decreaseHp(&RitchieHp, &userAttackPoint);
+        decreaseHp(&RitchieHp, userAttackPoint);
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -171,7 +171,7 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        decreaseHp(&RitchieHp, &userAttackPoint);
+        decreaseHp(&RitchieHp, userAttackPoint);
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -185,7 +185,7 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        decreaseHp(&RitchieHp, &userAttackPoint);
+        decreaseHp(&RitchieHp, userAttackPoint);
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -214,7 +214,7 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        decreaseHp(&RitchieHp, &userAttackPoint);
+        decreaseHp(&RitchieHp, userAttackPoint);
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -228,7 +228,7 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        decreaseHp(&RitchieHp, &userAttackPoint);
+        decreaseHp(&RitchieHp, userAttackPoint);
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -242,7 +242,7 @@ int main(void){
       switch (userAttackType) {
       case 0:
         displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-        decreaseHp(&RitchieHp, &userAttackPoint);
+        decreaseHp(&RitchieHp, userAttackPoint);
         displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
         displayRitchieDiningMessage();
         break;
@@ -256,7 +256,7 @@ int main(void){
         switch (userAttackType) {
         case 0:
           displayUserAttackLog(userName, userAttackPoint, firstStageEnemyName);
-          decreaseHp(&RitchieHp, &userAttackPoint);
+          decreaseHp(&RitchieHp, userAttackPoint);
           displayBattleStatus(userName, userHp, userFullHp, userAttackPoint, firstStageEnemyName, RitchieHp, RitchieFullHp, RitchieAttackPoint);
           displayRitchieDiningMessage();
           break;
@@ -464,8 +464,8 @@ void displayUserAttackLog(String userName, int userAttackPoint, String firstStag
 }
 
 
-void decreaseHp(int *hp, int *damage) {
-  *hp -= *damage;
+void decreaseHp(int *hp, int damage) {
+  *hp -= damage;
   if (*hp < 0) {
     *hp = 0;
   }
