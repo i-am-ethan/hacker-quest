@@ -420,9 +420,6 @@ void displayBattleStatus(String userName, int userHp, int userFullHp, int userAt
 void displayAttackOption(int stageNumber) {
   switch (stageNumber) {
   case 1:
-    printf("0:攻撃, 1:未習得\n");
-    printf("\033[33m0を入力してください。\033[0m\n");
-    break;
   case 2:
     printf("0:攻撃, 1:未習得\n");
     printf("\033[33m0を入力してください。\033[0m\n");
