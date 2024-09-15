@@ -69,7 +69,7 @@ int main(void){
   // -----------------------------------------------------
   switch (gameStartAnswer) {
   case 0:
-    exitAndDisplayErrorMessage("");
+    exitAndDisplayErrorMessage("準備を整えるのも大切なことです。");
   case 1:
     break;
   case 7:
