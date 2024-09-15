@@ -21,21 +21,21 @@ C言語の開発者であり、Unixオペレーティングシステムの共同
 名言：
 ```
 「The only way to learn a new programming language is by writing programs in it.」
-(「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」)
+「新しいプログラミング言語を学ぶ唯一の方法は、それでプログラムを書くことだ。」
 ```
 2. エリック・S・レイモンド 
 How To Become A Hackerの著者。
 オープンソース運動を通じて、プログラミングやハッカー文化に深く影響を与えた人物。
 ```
-「Good programmers know what to write. Great ones know what to rewrite (and reuse).」
-(「良いプログラマーは何を書くべきかを知っている。偉大なプログラマーは、何を書き直し、再利用するべきかを知っている。」)
+「Good programmers know what to write. Great ones know what to rewrite and reuse.」
+「良いプログラマーは何を書くべきかを知っている。偉大なプログラマーは、何を書き直し、再利用するべきかを知っている。」
 ```
 3. ポールグレアム
 Lispプログラミング言語のスペシャリスト。初期のウェブアプリケーション「Viaweb」の創業者。さらに、彼はスタートアップの支援を行うインキュベーター「Y Combinator」の共同創設者であり、技術的な革新とビジネスの融合に大きな影響を与えました。
 必殺技は、1日16時間働け！
 ```
 「It's hard to do a really good job on anything you don't think about in the shower.」
-(「シャワーを浴びているときに考えないことでは、本当に良い仕事はできない。」)
+「シャワーを浴びているときに考えないことでは、本当に良い仕事はできない。」
 ```
 
 ## このゲームの流れ
