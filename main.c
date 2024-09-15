@@ -293,6 +293,7 @@ void displayGameClearMessage() {
   printf("\033[43mこれでこのゲームを終わります!!!\033[0m\n\n");
   printf("\033[43mチャレンジありがとうございました!!!\033[0m\n\n");
   printf("\033[43m---- Hacker Quest\033[0m\n\n");
+  exit(1);
 }
 
 void insertLineBreak(int lineCount) {
