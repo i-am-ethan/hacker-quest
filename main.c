@@ -240,6 +240,24 @@ int main(void){
     exitAndDisplayErrorMessage("バトルに挑戦する準備ができていないようです。");
   }
 
+  String thirdStageEnemyName = "グレアム";
+  int GrahamHp = 12;
+  int GrahamFullHp = 12;
+  int GrahamAttackPoint = 12;
+  stageNumber = 3;
+
+  // -----------------------------------------------------
+  // (10-0)必殺技を覚える
+  // -----------------------------------------------------
+  insertLineBreak(20);
+  printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
+  printf("\033[96m%sはたたかいの経験値を経て新たな攻撃を覚えた...!!!\033[0m\n", userName);
+  printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
+  
+
+
+
+
 
 
   return 0;
