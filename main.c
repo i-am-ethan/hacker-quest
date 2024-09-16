@@ -683,8 +683,8 @@ void userAttack(
   // printf("%d\n", *enemyHp); // enemyHpが指す値
   // printf("%p\n", (void*)&enemyHp); // enemyHp変数のポインターのアドレス
   // printf("%p\n", (void*)enemyHp); // enemyHpの値のポインター
-  printf("攻撃の種類:%d\n", userAttackType);
-  printf("ユーザーの職業:%d\n", userJob);
+  // printf("攻撃の種類:%d\n", userAttackType);
+  // printf("ユーザーの職業:%d\n", userJob);
   switch (userAttackType) {
   case 0:
     displayUserAttackLog(userName, userAttackPoint, enemyName);
